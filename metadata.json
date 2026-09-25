@@ -1,0 +1,6 @@
+{
+  "name": "Amazone Airlines",
+  "description": "Compagnie aérienne premium du Bénin. Vols rapides, confortables et sécurisés entre Cotonou et Parakou.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -153,10 +153,10 @@ export default function BookingFlow({ searchQuery, onResetSearch }: BookingFlowP
   };
 
   return (
-    <section id="reservation" className="py-20 bg-slate-50 border-t border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="reservation" className="py-4 sm:py-6 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4">
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-center space-x-2 sm:space-x-4 mb-10 overflow-x-auto py-2 no-scrollbar">
+        <div className="flex items-center justify-center space-x-2 sm:space-x-4 mb-8 overflow-x-auto py-2 no-scrollbar">
           {[
             { id: 'flight-select', label: '1. Vols disponibles' },
             { id: 'seat-select', label: '2. Sièges' },
@@ -181,7 +181,7 @@ export default function BookingFlow({ searchQuery, onResetSearch }: BookingFlowP
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Main Content Area */}
-          <div className="lg:col-span-8 bg-white rounded-none p-6 sm:p-8 shadow-xl border border-slate-200/80">
+          <div className="lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-200/80">
             <AnimatePresence mode="wait">
               
               {/* STEP 1: FLIGHT SELECT */}
@@ -255,12 +255,12 @@ export default function BookingFlow({ searchQuery, onResetSearch }: BookingFlowP
                     {availableFlights.map((flight) => (
                       <div
                         key={flight.id}
-                        className="bg-white rounded-none border border-slate-200 overflow-hidden hover:border-brand-blue/40 hover:shadow-lg transition-all duration-300"
+                        className="bg-white rounded-xl border border-slate-200 overflow-hidden hover:border-brand-blue/40 hover:shadow-md transition-all duration-200"
                       >
                         {/* Upper row: Schedule & Route */}
                         <div className="p-6 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-slate-50/50 to-white">
                           <div className="flex items-center gap-4">
-                            <span className="bg-brand-blue/10 text-brand-blue text-xs font-mono font-bold px-2.5 py-1.5 rounded-none">
+                            <span className="bg-brand-blue/10 text-brand-blue text-xs font-mono font-bold px-2.5 py-1.5 rounded-lg">
                               {flight.flightNumber}
                             </span>
                             <span className="text-xs text-slate-500 font-medium">

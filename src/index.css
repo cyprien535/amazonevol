@@ -6,9 +6,15 @@
   --font-display: "Outfit", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-brand-blue: #0065A1;
-  --color-brand-yellow: #FED307;
-  --color-brand-dark: #0A192F;
+  --color-brand-blue: #0A4D80;
+  --color-brand-blue-hover: #083B63;
+  --color-brand-gold: #C69214;
+  --color-brand-gold-hover: #AF7F0E;
+  --color-brand-gold-light: #FDF8ED;
+  --color-brand-yellow: #C69214;
+  --color-brand-dark: #071322;
+  --color-brand-surface: #FAF9F6;
+  --color-brand-border: #EAE6DF;
 }
 
 @layer base {

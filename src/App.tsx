@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
-import FloatingDock from './components/FloatingDock';
 import Hero from './components/Hero';
 import BookingFlow from './components/BookingFlow';
 import Advantages from './components/Advantages';
@@ -95,13 +94,6 @@ export default function App() {
       {/* 6. Footer section */}
       <Footer />
 
-      {/* Floating Action Menu (Bottom Dock) */}
-      <FloatingDock
-        onOpenBooking={() => handleSelectRoute('Cotonou', 'Parakou')}
-        onOpenContact={() => setIsContactOpen(true)}
-        onOpenLogin={() => setIsLoginOpen(true)}
-      />
-
       {/* MODALS / OVERLAYS */}
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
       <LoginModal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
@@ -110,7 +102,7 @@ export default function App() {
       <AnimatePresence>
         {searchQuery && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/75 backdrop-blur-sm overflow-hidden">
-            <div className="relative w-full max-w-6xl max-h-[92vh] bg-white border border-slate-300 shadow-2xl flex flex-col overflow-hidden">
+            <div className="relative w-full max-w-6xl max-h-[92vh] bg-white rounded-2xl border border-slate-300 shadow-2xl flex flex-col overflow-hidden">
               {/* Header Bar */}
               <div className="bg-brand-dark px-6 py-4 flex items-center justify-between border-b border-white/10 shrink-0">
                 <div className="flex items-center gap-3">
@@ -124,8 +116,9 @@ export default function App() {
                 </div>
                 <button
                   onClick={() => setSearchQuery(null)}
-                  className="p-1.5 text-slate-400 hover:text-white hover:bg-white/10 rounded-none transition-colors"
-                  title="Fermer"
+                  className="p-1.5 text-slate-400 hover:text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+                  title="Fermer la réservation"
+                  aria-label="Fermer la réservation"
                 >
                   <X className="w-5 h-5" />
                 </button>

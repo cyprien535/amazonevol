@@ -165,15 +165,15 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                   className="px-1"
                 >
                   <motion.div
-                    className="bg-white rounded-none overflow-hidden border border-slate-200/80 hover:border-brand-blue/40 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group h-full relative"
-                    whileHover={{ y: -6 }}
+                    className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-brand-blue/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group h-full relative"
+                    whileHover={{ y: -4 }}
                   >
                     {/* Cinematic Card Image with Status Badge */}
-                    <div className="relative h-56 sm:h-64 overflow-hidden bg-slate-100">
+                    <div className="relative h-56 sm:h-60 overflow-hidden bg-slate-100">
                       <img
                         src={dest.image}
                         alt={dest.name}
-                        className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                         referrerPolicy="no-referrer"
                       />
                       
@@ -183,18 +183,18 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                       {/* Top floating badge panel */}
                       <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
                         {isRouteActive ? (
-                          <span className="bg-emerald-500/95 backdrop-blur-md text-white text-[9px] font-bold px-3 py-1.5 rounded-none uppercase tracking-widest flex items-center gap-1.5 shadow-md">
-                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                          <span className="bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-md">
+                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                             Liaison Active
                           </span>
                         ) : (
-                          <span className="bg-brand-blue/95 backdrop-blur-md text-brand-yellow text-[9px] font-bold px-3 py-1.5 rounded-none uppercase tracking-widest flex items-center gap-1 shadow-md">
-                            <Sparkles className="w-3 h-3 animate-pulse" />
+                          <span className="bg-slate-950/80 backdrop-blur-md text-brand-yellow text-[10px] font-bold px-3 py-1 rounded-full border border-white/10 uppercase tracking-wider flex items-center gap-1 shadow-md">
+                            <Sparkles className="w-3 h-3 text-brand-yellow" />
                             Bientôt disponible
                           </span>
                         )}
 
-                        <span className="bg-white/10 backdrop-blur-md text-white border border-white/20 text-[10px] font-mono font-bold px-2.5 py-1 rounded-none">
+                        <span className="bg-white/15 backdrop-blur-md text-white border border-white/20 text-[11px] font-mono font-bold px-2.5 py-1 rounded-full">
                           {dest.code}
                         </span>
                       </div>
@@ -203,7 +203,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                       <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
                         <div className="space-y-0.5">
                           <p className="text-[10px] uppercase font-mono tracking-widest text-brand-yellow font-bold">
-                            Vol direct
+                            Vol direct régulier
                           </p>
                           <h4 className="text-lg font-bold text-white font-display">
                             {dest.name}
@@ -213,8 +213,8 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                     </div>
 
                     {/* Card detailed body */}
-                    <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-6">
-                      <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
+                    <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                         {dest.description}
                       </p>
 
@@ -224,7 +224,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                           <span className="text-[10px] text-slate-400 uppercase font-mono tracking-wider font-bold">
                             DURÉE DU VOL
                           </span>
-                          <span className="font-mono font-bold text-slate-700 text-sm">
+                          <span className="font-mono font-bold text-slate-800 text-sm">
                             {dest.time}
                           </span>
                         </div>
@@ -237,15 +237,15 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                                 onSelectRoute(parts[0], parts[1]);
                               }
                             }}
-                            className="bg-brand-blue hover:bg-[#005c94] text-white pl-4 pr-3.5 py-2.5 rounded-none transition-all shadow-md flex items-center gap-2 font-bold text-xs hover:scale-103"
+                            className="bg-brand-blue hover:bg-[#005282] text-white px-4 py-2 rounded-xl transition-all shadow-sm flex items-center gap-2 font-bold text-xs cursor-pointer active:scale-95"
                             title={`Réserver un vol pour ${dest.name}`}
                           >
-                            Réserver
-                            <ArrowRight className="w-4 h-4 text-brand-yellow transform transition-transform group-hover:translate-x-1" />
+                            <span>Réserver</span>
+                            <ArrowRight className="w-3.5 h-3.5 text-brand-yellow" />
                           </button>
                         ) : (
-                          <span className="text-[9px] font-mono font-bold text-brand-blue bg-brand-blue/5 border border-brand-blue/10 px-3 py-1.5 rounded-none uppercase tracking-wider">
-                            Pré-Réserver
+                          <span className="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-full uppercase tracking-wider">
+                            En ouverture
                           </span>
                         )}
                       </div>

@@ -66,12 +66,12 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative bg-white rounded-none w-full max-w-lg shadow-2xl overflow-hidden p-6 sm:p-8 max-h-[90vh] overflow-y-auto border border-slate-200"
+            className="relative bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden p-6 sm:p-8 max-h-[90vh] overflow-y-auto border border-slate-200"
           >
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-none hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
               title="Fermer"
             >
               <X className="w-5 h-5" />
@@ -81,7 +81,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               /* LOGIN STATE */
               <div className="space-y-6">
                 <div className="text-center space-y-2">
-                  <div className="w-12 h-12 rounded-none bg-brand-blue/10 text-brand-blue flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center mx-auto">
                     <LogIn className="w-6 h-6" />
                   </div>
                   <h3 className="text-2xl font-display font-extrabold text-brand-dark">
@@ -102,7 +102,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full border border-slate-200 rounded-none px-4 py-2.5 text-sm focus:border-brand-blue focus:outline-none"
+                      className="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:border-brand-blue focus:outline-none"
                       placeholder="Ex: koffi.soglo@gmail.com"
                     />
                   </div>
@@ -116,7 +116,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                       required
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full border border-slate-200 rounded-none px-4 py-2.5 text-sm focus:border-brand-blue focus:outline-none"
+                      className="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:border-brand-blue focus:outline-none"
                       placeholder="Ex: +229 97 00 00 00"
                     />
                   </div>
@@ -124,7 +124,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
                   <button
                     type="submit"
                     disabled={isLoggingIn}
-                    className="w-full bg-brand-blue hover:bg-brand-blue/90 text-white font-bold py-3 rounded-none transition-all shadow-md flex items-center justify-center gap-2 text-sm"
+                    className="w-full bg-brand-blue hover:bg-[#005282] text-white font-bold py-3 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-sm cursor-pointer"
                   >
                     {isLoggingIn ? (
                       <>

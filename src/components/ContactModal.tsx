@@ -63,7 +63,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative bg-white rounded-none w-full max-w-4xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 max-h-[90vh] border border-slate-200"
+            className="relative bg-white rounded-2xl w-full max-w-4xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 max-h-[90vh] border border-slate-200"
           >
             {/* Left side: Contacts & FAQ (7 Columns on desktop) */}
             <div className="md:col-span-7 p-6 sm:p-8 overflow-y-auto max-h-[45vh] md:max-h-none border-b md:border-b-0 md:border-r border-slate-100 space-y-8">
@@ -78,7 +78,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
               {/* Direct Contacts Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
-                <div className="p-4 bg-slate-50 rounded-none border border-slate-100 flex items-start gap-3">
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-3">
                   <Phone className="w-5 h-5 text-brand-blue shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-brand-dark block text-xs uppercase mb-0.5">Téléphone client</span>
@@ -89,7 +89,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </div>
                 </div>
 
-                <div className="p-4 bg-slate-50 rounded-none border border-slate-100 flex items-start gap-3">
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 flex items-start gap-3">
                   <Mail className="w-5 h-5 text-brand-blue shrink-0 mt-0.5" />
                   <div>
                     <span className="font-bold text-brand-dark block text-xs uppercase mb-0.5">Email Support</span>

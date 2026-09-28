@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Plane } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface NavbarProps {
@@ -77,13 +77,18 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
               })}
             </nav>
 
-            {/* 3. Bouton Réserver un vol */}
+            {/* 3. Bouton Réserver un vol avec éclat lumineux au toucher */}
             <div className="flex items-center gap-2 shrink-0">
               <button
                 onClick={onOpenBooking}
-                className="bg-[#C69214] hover:bg-[#B5820E] text-white font-bold text-xs sm:text-sm px-5 sm:px-7 py-2.5 rounded-full shadow-sm hover:shadow transition-all duration-200 cursor-pointer active:scale-95 whitespace-nowrap"
+                className="group relative overflow-hidden bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B] text-white font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 rounded-full shadow-md shadow-[#C69214]/25 hover:shadow-[0_0_24px_rgba(198,146,20,0.65)] border border-amber-200/40 transition-all duration-300 cursor-pointer active:scale-95 whitespace-nowrap flex items-center gap-2 transform hover:-translate-y-0.5"
               >
-                Réserver un vol
+                {/* Rayon lumineux qui traverse et fait briller le bouton au survol / toucher */}
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full group-active:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
+
+                {/* Icône avion en vol avec impulsion */}
+                <Plane className="w-3.5 h-3.5 text-white -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 shrink-0" />
+                <span className="tracking-wide relative z-10">Réserver un vol</span>
               </button>
 
               {/* Toggle mobile */}

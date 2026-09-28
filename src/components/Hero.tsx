@@ -244,13 +244,17 @@ export default function Hero({ onSearch }: HeroProps) {
                   </div>
                 </div>
 
-                {/* Primary CTA Button */}
+                {/* Primary CTA Button with pro travel shine */}
                 <button
                   type="submit"
-                  className="w-full bg-[#C69214] hover:bg-[#AF7F0E] text-white font-display font-extrabold text-base py-3.5 px-6 rounded-xl shadow-lg shadow-[#C69214]/20 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 cursor-pointer"
+                  className="group relative overflow-hidden w-full bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B] text-white font-display font-extrabold text-base py-3.5 px-6 rounded-xl shadow-lg shadow-[#C69214]/25 hover:shadow-[0_0_30px_rgba(198,146,20,0.6)] border border-amber-200/30 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5 cursor-pointer"
                 >
-                  <span>Rechercher les vols disponibles</span>
-                  <ArrowRight className="w-4 h-4 text-white" />
+                  {/* Rayon de brillance qui traverse au survol ou toucher */}
+                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full group-active:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/45 to-transparent pointer-events-none" />
+
+                  <Plane className="w-4 h-4 text-white -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                  <span className="relative z-10">Rechercher les vols disponibles</span>
+                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform relative z-10" />
                 </button>
 
                 <p className="text-center text-[11px] text-slate-400 pt-1">

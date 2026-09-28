@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plane, Users, Compass, CheckCircle2, Shield, Sparkles } from 'lucide-react';
+import { Plane } from 'lucide-react';
 import { motion } from 'motion/react';
 import { FLEET } from '../data';
 
@@ -54,65 +54,41 @@ export default function Fleet({ onSelectAircraft }: FleetProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: index * 0.12, duration: 0.5 }}
-                className="bg-slate-50 hover:bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group justify-between"
+                className="relative bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:border-[#C69214]/60 hover:shadow-[0_0_35px_rgba(198,146,20,0.3)] active:shadow-[0_0_40px_rgba(198,146,20,0.45)] transition-all duration-500 flex flex-col group justify-between hover:-translate-y-2 cursor-pointer select-none"
               >
+                {/* Rayon de brillance oblique traversant toute la carte au toucher / survol */}
+                <span className="absolute inset-0 -translate-x-[160%] group-hover:translate-x-[160%] group-active:translate-x-[160%] transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/45 to-transparent pointer-events-none z-30 skew-x-[-22deg]" />
+
+                {/* Aura de luminosité intérieure */}
+                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 ring-2 ring-[#C69214]/30 pointer-events-none z-20" />
+
                 <div>
                   {/* Image container with aspect ratio and fallback */}
-                  <div className="relative h-56 sm:h-60 overflow-hidden bg-slate-200">
+                  <div className="relative h-60 sm:h-64 overflow-hidden bg-slate-900">
                     <img
                       src={plane.image}
                       alt={`Photo de l'appareil ${plane.name}`}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                       referrerPolicy="no-referrer"
                     />
                     
                     {/* Gradient scrim */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent"></div>
+
+                    {/* Reflet spéculaire sur la carlingue */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-700 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none z-10" />
 
                     {/* Category Badge */}
-                    <div className="absolute top-4 left-4 bg-slate-950/80 backdrop-blur-md text-brand-yellow text-xs font-mono font-bold px-3 py-1 rounded-full border border-white/10 uppercase tracking-wider">
+                    <div className="absolute top-4 left-4 bg-slate-950/85 backdrop-blur-md text-[#C69214] text-xs font-mono font-bold px-3 py-1 rounded-full border border-white/10 group-hover:border-[#C69214]/60 group-hover:shadow-[0_0_12px_rgba(198,146,20,0.4)] transition-all duration-300 uppercase tracking-wider z-20">
                       {plane.category}
                     </div>
                   </div>
 
-                  {/* Body Specs & Description */}
-                  <div className="p-6 sm:p-7 space-y-5">
-                    <div>
-                      <h3 className="text-2xl font-display font-bold text-brand-dark group-hover:text-brand-blue transition-colors">
-                        {plane.name}
-                      </h3>
-                      <p className="text-slate-600 text-sm leading-relaxed mt-2">
-                        {plane.description}
-                      </p>
-                    </div>
-
-                    {/* Specs metric grid */}
-                    <div className="grid grid-cols-2 gap-3 bg-white p-3.5 rounded-xl border border-slate-200/80 text-xs font-mono">
-                      <div className="flex items-center gap-2">
-                        <Users className="w-4 h-4 text-brand-blue shrink-0" />
-                        <div>
-                          <span className="text-slate-400 block text-[10px] uppercase font-bold">Capacité</span>
-                          <span className="font-bold text-slate-800">{plane.capacity}</span>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Compass className="w-4 h-4 text-brand-blue shrink-0" />
-                        <div>
-                          <span className="text-slate-400 block text-[10px] uppercase font-bold">Vitesse</span>
-                          <span className="font-bold text-slate-800">{plane.speed}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Features list */}
-                    <div className="space-y-2 pt-1">
-                      {plane.features.map((feat) => (
-                        <div key={feat} className="flex items-center gap-2 text-xs text-slate-700">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                          <span>{feat}</span>
-                        </div>
-                      ))}
-                    </div>
+                  {/* Body Content - Plane Name */}
+                  <div className="p-6 sm:p-7 relative z-10">
+                    <h3 className="text-2xl font-display font-bold text-brand-dark group-hover:text-brand-blue group-hover:drop-shadow-sm transition-colors">
+                      {plane.name}
+                    </h3>
                   </div>
                 </div>
 
@@ -126,14 +102,19 @@ export default function Fleet({ onSelectAircraft }: FleetProps) {
                         if (element) element.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
-                    className={`w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-sm active:scale-95 ${
+                    className={`group relative overflow-hidden w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer shadow-md active:scale-95 transform hover:-translate-y-0.5 ${
                       isVipOrCharter
-                        ? 'bg-brand-dark hover:bg-slate-900 text-brand-yellow border border-white/10'
-                        : 'bg-brand-blue hover:bg-[#005282] text-white shadow-brand-blue/10'
+                        ? 'bg-gradient-to-r from-[#071322] via-[#0A192F] to-[#0D2342] text-[#C69214] border border-[#C69214]/30 hover:border-[#C69214] hover:shadow-[0_0_25px_rgba(198,146,20,0.4)]'
+                        : 'bg-gradient-to-r from-[#083B63] via-[#0A4D80] to-[#0D5B96] text-white hover:shadow-[0_0_25px_rgba(10,77,128,0.5)] border border-white/10'
                     }`}
                   >
-                    <Plane className="w-4 h-4 transform -rotate-45" />
-                    <span>
+                    {/* Rayon de brillance */}
+                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full group-active:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/35 to-transparent pointer-events-none" />
+
+                    <Plane className={`w-4 h-4 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 relative z-10 ${
+                      isVipOrCharter ? 'text-[#C69214]' : 'text-white'
+                    }`} />
+                    <span className="relative z-10">
                       {plane.name.startsWith('Charter')
                         ? 'Affréter ce Charter'
                         : plane.category.includes('VIP')

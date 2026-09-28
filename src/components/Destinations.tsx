@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, MapPin, ChevronLeft, ChevronRight, Play, Pause, Compass, Sparkles } from 'lucide-react';
+import { ArrowRight, MapPin, ChevronLeft, ChevronRight, Play, Pause, Compass, Sparkles, Plane } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { DESTINATIONS } from '../data';
 
@@ -237,11 +237,15 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                                 onSelectRoute(parts[0], parts[1]);
                               }
                             }}
-                            className="bg-brand-blue hover:bg-[#005282] text-white px-4 py-2 rounded-xl transition-all shadow-sm flex items-center gap-2 font-bold text-xs cursor-pointer active:scale-95"
+                            className="group relative overflow-hidden bg-gradient-to-r from-[#083B63] via-[#0A4D80] to-[#0D5B96] hover:from-[#0A4D80] hover:to-[#0F6EB4] text-white px-4 py-2.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-[0_0_20px_rgba(10,77,128,0.5)] flex items-center gap-2 font-bold text-xs cursor-pointer active:scale-95 transform hover:-translate-y-0.5"
                             title={`Réserver un vol pour ${dest.name}`}
                           >
-                            <span>Réserver</span>
-                            <ArrowRight className="w-3.5 h-3.5 text-brand-yellow" />
+                            {/* Rayon de brillance */}
+                            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full group-active:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+
+                            <Plane className="w-3.5 h-3.5 text-white -rotate-45 group-hover:translate-x-0.5 transition-transform" />
+                            <span className="relative z-10">Réserver un vol</span>
+                            <ArrowRight className="w-3.5 h-3.5 text-[#C69214] group-hover:translate-x-1 transition-transform relative z-10" />
                           </button>
                         ) : (
                           <span className="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-full uppercase tracking-wider">

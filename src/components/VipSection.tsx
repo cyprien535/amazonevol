@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Sparkles, Shield, Clock, HelpCircle, ArrowRight, GlassWater } from 'lucide-react';
+import { Award, Sparkles, Shield, Clock, HelpCircle, ArrowRight, GlassWater, Plane } from 'lucide-react';
 import { motion } from 'motion/react';
 import { IMAGES } from '../data';
 
@@ -120,10 +120,14 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
                 onClick={() => {
                   onSelectVip();
                 }}
-                className="bg-[#C69214] hover:bg-[#AF7F0E] text-white px-7 py-3.5 rounded-xl font-display font-extrabold text-base shadow-lg shadow-[#C69214]/20 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5 cursor-pointer"
+                className="group relative overflow-hidden bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B] text-white px-7 py-3.5 rounded-xl font-display font-extrabold text-base shadow-lg shadow-[#C69214]/25 hover:shadow-[0_0_30px_rgba(198,146,20,0.6)] border border-amber-200/30 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5 cursor-pointer"
               >
-                <span>Demander une réservation VIP</span>
-                <ArrowRight className="w-4 h-4 text-white" />
+                {/* Rayon de brillance au toucher/survol */}
+                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full group-active:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/45 to-transparent pointer-events-none" />
+
+                <Plane className="w-4 h-4 text-white -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                <span className="relative z-10">Demander une réservation VIP</span>
+                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform relative z-10" />
               </button>
 
               <span className="text-xs text-slate-400 text-center sm:text-left font-mono">

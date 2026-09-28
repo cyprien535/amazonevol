@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Plane, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Send, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { IMAGES } from '../data';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -43,10 +44,13 @@ export default function Footer() {
           <div className="lg:col-span-4 space-y-6">
             <div className="bg-white p-2.5 rounded-2xl inline-block shadow-inner">
               <img
-                src="https://flyamazoneair.bj/upload/images/654030974894001768899700.png"
+                src={IMAGES.logo}
                 alt="Amazone Airlines Logo"
-                referrerPolicy="no-referrer"
+                width={120}
+                height={53}
                 className="h-9 w-auto object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 
@@ -166,11 +170,11 @@ export default function Footer() {
         </div>
 
         {/* Lower footer: Legal bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-400">
           <div>
-            <p>© {new Date().getFullYear()} Amazone Airlines BJ. Tous droits réservés.</p>
-            <p className="text-[10px] mt-1 text-slate-600">
-              Agrément de transporteur aérien civil n° BJ-2026-AMZ. Opéré en stricte conformité avec l'ANAC Bénin.
+            <p className="text-slate-300">© {new Date().getFullYear()} Amazone Airlines BJ. Tous droits réservés.</p>
+            <p className="text-[11px] mt-1 text-slate-400">
+              Agrément de transporteur aérien civil au Bénin. Opéré en conformité avec la réglementation de l'ANAC.
             </p>
           </div>
           
@@ -179,7 +183,7 @@ export default function Footer() {
               <a
                 key={link.name}
                 href={link.href}
-                className="hover:text-brand-yellow transition-colors"
+                className="text-slate-400 hover:text-brand-yellow transition-colors underline-offset-2 hover:underline"
               >
                 {link.name}
               </a>

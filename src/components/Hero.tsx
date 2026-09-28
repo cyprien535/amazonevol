@@ -39,6 +39,11 @@ export default function Hero({ onSearch }: HeroProps) {
         <img
           src={IMAGES.hero}
           alt="Avion Amazone Airlines en vol au-dessus des nuages"
+          width={1440}
+          height={900}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
           className="w-full h-full object-cover object-center opacity-75 scale-102"
           referrerPolicy="no-referrer"
         />

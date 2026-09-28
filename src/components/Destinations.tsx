@@ -100,6 +100,10 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                       <img
                         src={dest.image}
                         alt={dest.name}
+                        width={600}
+                        height={400}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                         referrerPolicy="no-referrer"
                       />
@@ -110,7 +114,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                       {/* Top floating badge panel */}
                       <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
                         {isRouteActive ? (
-                          <span className="bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-md">
+                          <span className="bg-emerald-800 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-md">
                             <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
                             Liaison Active
                           </span>
@@ -132,9 +136,9 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                           <p className="text-[10px] uppercase font-mono tracking-widest text-brand-yellow font-bold">
                             Vol direct régulier
                           </p>
-                          <h4 className="text-lg font-bold text-white font-display">
+                          <h3 className="text-lg font-bold text-white font-display">
                             {dest.name}
-                          </h4>
+                          </h3>
                         </div>
                       </div>
                     </div>
@@ -148,7 +152,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                       {/* Footer block with time indicator & action buttons */}
                       <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                         <div className="flex flex-col">
-                          <span className="text-[10px] text-slate-400 uppercase font-mono tracking-wider font-bold">
+                          <span className="text-[10px] text-slate-600 uppercase font-mono tracking-wider font-bold">
                             DURÉE DU VOL
                           </span>
                           <span className="font-mono font-bold text-slate-800 text-sm">
@@ -189,36 +193,40 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
         </div>
 
         {/* Carousel Visual Navigation Dots & Arrows */}
-        <div className="flex justify-center items-center gap-4 mt-10">
+        <div className="flex justify-center items-center gap-2 mt-8">
           <button
             onClick={prevSlide}
-            className="p-2 rounded-full bg-white hover:bg-brand-blue hover:text-white text-slate-600 transition-all shadow-sm border border-slate-200"
+            className="w-10 h-10 rounded-full bg-white hover:bg-brand-blue hover:text-white text-slate-700 transition-all shadow-sm border border-slate-200 flex items-center justify-center cursor-pointer active:scale-95"
             aria-label="Destination précédente"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center">
             {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => {
                   setCurrentIndex(idx);
                 }}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  currentIndex === idx
-                    ? 'w-8 bg-brand-blue'
-                    : 'w-2 bg-slate-300 hover:bg-slate-400'
-                }`}
+                className="w-10 h-11 flex items-center justify-center p-2 group cursor-pointer"
                 title={`Aller à la diapositive ${idx + 1}`}
                 aria-label={`Aller à la diapositive ${idx + 1}`}
-              />
+              >
+                <span
+                  className={`h-2 rounded-full transition-all duration-300 block ${
+                    currentIndex === idx
+                      ? 'w-8 bg-brand-blue'
+                      : 'w-2.5 bg-slate-300 group-hover:bg-slate-400'
+                  }`}
+                />
+              </button>
             ))}
           </div>
 
           <button
             onClick={nextSlide}
-            className="p-2 rounded-full bg-white hover:bg-brand-blue hover:text-white text-slate-600 transition-all shadow-sm border border-slate-200"
+            className="w-10 h-10 rounded-full bg-white hover:bg-brand-blue hover:text-white text-slate-700 transition-all shadow-sm border border-slate-200 flex items-center justify-center cursor-pointer active:scale-95"
             aria-label="Destination suivante"
           >
             <ChevronRight className="w-4 h-4" />

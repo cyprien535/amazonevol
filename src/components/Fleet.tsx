@@ -68,6 +68,10 @@ export default function Fleet({ onSelectAircraft }: FleetProps) {
                     <img
                       src={plane.image}
                       alt={`Photo de l'appareil ${plane.name}`}
+                      width={600}
+                      height={400}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                       referrerPolicy="no-referrer"
                     />

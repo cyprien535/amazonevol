@@ -1,9 +1,10 @@
 import { Flight, Seat } from './types';
-import heroImg from './assets/images/hero_plane_flight_1782837395527.jpg';
-import atr42Img from './assets/images/atr42_regional_1782837409116.jpg';
-import vipJetImg from './assets/images/vip_private_jet_1782837424812.jpg';
-import vipInteriorImg from './assets/images/private_jet_interior_1782837441727.jpg';
-import charterImg from './assets/images/regenerated_image_1790344564397.png';
+import heroImg from './assets/images/hero_plane.webp';
+import atr42Img from './assets/images/atr42_regional.webp';
+import vipJetImg from './assets/images/vip_private_jet.webp';
+import vipInteriorImg from './assets/images/private_jet_interior.webp';
+import charterImg from './assets/images/charter_private.webp';
+import logoImg from './assets/images/logo.webp';
 
 // Image assets bundled by Vite for production and development
 export const IMAGES = {
@@ -12,6 +13,7 @@ export const IMAGES = {
   vipJet: vipJetImg,
   vipInterior: vipInteriorImg,
   charter: charterImg,
+  logo: logoImg,
 };
 
 export const FLIGHTS_COTO_PARA: Flight[] = [
@@ -155,7 +157,7 @@ export const DESTINATIONS = [
     description: 'Liaison directe vers le Nigéria en 45 minutes de vol. Facilitez vos affaires sans passer par la route transfrontalière.',
     code: 'COO ↔ LOS',
     time: '45m',
-    image: 'https://images.unsplash.com/photo-1596422846543-75c6fc1f4767?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&q=80&w=600',
   },
   {
     name: 'Cotonou ↔ Abidjan',
@@ -171,7 +173,7 @@ export const DESTINATIONS = [
     description: 'Ouverture vers le Sénégal en vol direct pour connecter les deux grandes métropoles ouest-africaines.',
     code: 'COO ↔ DKR',
     time: '3h 30m',
-    image: 'https://images.unsplash.com/photo-1509840144519-8d8e5f29d28c?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=600',
   },
 ];
 

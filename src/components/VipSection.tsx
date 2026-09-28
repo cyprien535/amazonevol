@@ -52,6 +52,10 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
               <img
                 src={IMAGES.vipInterior}
                 alt="Intérieur cabine de luxe VIP Amazone Airlines"
+                width={800}
+                height={500}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-[420px] sm:h-[460px] object-cover object-center"
                 referrerPolicy="no-referrer"
               />
@@ -102,9 +106,9 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
                       <IconComp className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white text-sm font-display">
+                      <h3 className="font-bold text-white text-sm font-display">
                         {item.title}
-                      </h4>
+                      </h3>
                       <p className="text-slate-400 text-xs mt-1 leading-relaxed">
                         {item.desc}
                       </p>

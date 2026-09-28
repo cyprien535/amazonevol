@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Plane } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { IMAGES } from '../data';
 
 interface NavbarProps {
   onOpenBooking: () => void;
@@ -50,10 +51,13 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
             {/* 1. Logo à gauche */}
             <a href="#accueil" className="flex items-center shrink-0 group">
               <img
-                src="https://flyamazoneair.bj/upload/images/654030974894001768899700.png"
+                src={IMAGES.logo}
                 alt="Amazone Airlines Logo"
-                referrerPolicy="no-referrer"
+                width={120}
+                height={53}
                 className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                loading="eager"
+                decoding="async"
               />
             </a>
 

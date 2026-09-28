@@ -5,6 +5,7 @@ import vipJetImg from './assets/images/vip_private_jet.webp';
 import vipInteriorImg from './assets/images/private_jet_interior.webp';
 import charterImg from './assets/images/charter_private.webp';
 import logoImg from './assets/images/logo.webp';
+import planeCutoutImg from './assets/images/regenerated_image_1790604369886.png';
 
 // Image assets bundled by Vite for production and development
 export const IMAGES = {
@@ -14,6 +15,7 @@ export const IMAGES = {
   vipInterior: vipInteriorImg,
   charter: charterImg,
   logo: logoImg,
+  planeCutout: planeCutoutImg,
 };
 
 export const FLIGHTS_COTO_PARA: Flight[] = [

@@ -20,24 +20,24 @@ export default function Fleet({ onSelectAircraft }: FleetProps) {
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full">
               <Plane className="w-3.5 h-3.5 transform -rotate-45" />
-              <span>Notre Flotte Moderne</span>
+              <span>Appareils en service</span>
             </div>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-brand-dark tracking-tight [text-wrap:balance]">
-              Des appareils éprouvés et certifiés pour vos déplacements
+              Une flotte adaptée à vos besoins de déplacement
             </h2>
             
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              De l'efficience économique de notre ATR 42 pour vos liaisons régulières à la discrétion exclusive de nos jets Falcon d'affaires.
+              Du vol de ligne régionale sur ATR 42-500 aux trajets d'affaires personnalisés en jet Falcon.
             </p>
           </div>
 
           <div className="shrink-0 flex items-center gap-3">
             <button
-              onClick={() => onSelectAircraft('Vol Régional Régulier')}
+              onClick={() => onSelectAircraft('Ligne Régulière Domestique')}
               className="bg-brand-blue hover:bg-[#005282] text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-sm hover:shadow transition-all duration-200 cursor-pointer"
             >
-              Consulter les tarifs réguliers
+              Voir les vols réguliers
             </button>
           </div>
         </div>

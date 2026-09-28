@@ -6,39 +6,39 @@ export default function Advantages() {
   const steps = [
     {
       number: '01',
-      title: 'Gain de temps radical',
+      title: 'Gain de temps décisif',
       description:
         'Reliez Cotonou à Parakou en seulement 1h15 de vol direct, contre 8 à 10 heures d’épreuve sur la route RNIE 2.',
     },
     {
       number: '02',
-      title: 'Ponctualité garantie 98.7%',
+      title: '3 rotations quotidiennes',
       description:
-        '3 rotations quotidiennes fixes entre Cotonou-Cadjehoun et Parakou-Tourou pour sécuriser vos réunions professionnelles sans retard.',
+        'Des vols programmés le matin, le midi et en fin de journée entre Cotonou-Cadjehoun et Parakou-Tourou pour s’adapter à vos obligations.',
     },
     {
       number: '03',
-      title: 'Sécurité certifiée OACI & ANAC',
+      title: 'Sécurité & conformité ANAC',
       description:
-        'Flotte sous maintenance certifiée Part-145, inspections systématiques et pilotes chevronnés formés sur simulateurs certifiés.',
+        'Appareils suivis sous programmes de maintenance stricts et équipages qualifiés formés aux plus hauts standards aéronautiques.',
     },
     {
       number: '04',
-      title: 'Confort & Cabine pressurisée',
+      title: 'Confort en cabine pressurisée',
       description:
-        'Sièges cuir inclinables, climatisation régulée et service d’accueil avec rafraîchissements locaux et eau Possotomé offerts.',
+        'Sièges ergonomiques, climatisation régulée et service d’accueil avec rafraîchissements locaux et eau minérale servis en vol.',
     },
     {
       number: '05',
-      title: 'Bagages inclus sans supplément',
+      title: 'Franchise bagages transparente',
       description:
-        'Franchise de 23 kg en soute et 7 kg en cabine incluse sur tous les billets. Récupération rapide en moins de 10 minutes au sol.',
+        '23 kg en soute et 7 kg en cabine inclus sur l’ensemble de nos billets. Restitution rapide des bagages dès votre arrivée.',
     },
     {
       number: '06',
-      title: 'Salons & Services VIP exclusifs',
+      title: 'Services d’affaires & VIP',
       description:
-        'Accès aux salons d’attente VIP, embarquement express en 15 minutes et flexibilité pour les délégations d’affaires et familles.',
+        'Accès aux salons d’attente dédiés, procédures au sol fluides et solutions d’affrètement personnalisé pour délégations et entreprises.',
     },
   ];
 
@@ -56,15 +56,15 @@ export default function Advantages() {
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-3">
           <div className="inline-flex items-center gap-2 bg-[#0A4D80]/10 text-[#0A4D80] text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full">
             <Sparkles className="w-3.5 h-3.5 text-[#C69214]" />
-            <span>Pourquoi choisir Amazone Airlines</span>
+            <span>Nos engagements</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-brand-dark tracking-tight [text-wrap:balance]">
-            Le transport aérien moderne au service de vos déplacements au Bénin
+            Pourquoi voyager avec Amazone Airlines ?
           </h2>
 
           <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
-            Conçu pour les entrepreneurs, hauts cadres, délégations officielles et familles exigeantes souhaitant relier le Sud et le Nord du pays en toute sérénité.
+            Une solution de transport aérien pensée pour les professionnels, délégations et familles qui privilégient la rapidité, la sécurité et la sérénité.
           </p>
         </div>
 

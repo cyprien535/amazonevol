@@ -51,7 +51,7 @@ export default function Footer() {
             </div>
 
             <p className="text-sm text-slate-400 leading-relaxed">
-              Première compagnie aérienne haut de gamme du Bénin, nous réinventons le transport régional en combinant ponctualité rigoureuse, sécurité certifiée et art de vivre béninois.
+              Amazone Airlines assure la liaison aérienne quotidienne Cotonou–Parakou et propose des solutions d'affrètement privé adaptées aux besoins de mobilité au Bénin.
             </p>
 
             {/* Social Icons */}
@@ -105,8 +105,8 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-brand-yellow shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-white block text-xs uppercase mb-0.5">Siège Social & Agence</span>
-                  <span className="text-slate-400">Zone Résidentielle, Boulevard de la Marina, Cotonou, Bénin.</span>
+                  <span className="font-bold text-white block text-xs uppercase mb-0.5">Aérogares & Comptoirs</span>
+                  <span className="text-slate-400">Aéroport de Cadjehoun (Cotonou) & Aéroport de Tourou (Parakou), Bénin.</span>
                 </div>
               </li>
               <li className="flex items-center gap-3">
@@ -132,7 +132,7 @@ export default function Footer() {
               Newsletter Amazone
             </h4>
             <p className="text-sm text-slate-400 leading-relaxed">
-              Inscrivez-vous pour recevoir en avant-première nos offres exclusives de vols et l'ouverture de nos nouvelles destinations.
+              Inscrivez-vous pour recevoir nos informations de vols, ouvertures de lignes et offres spéciales.
             </p>
 
             <form onSubmit={handleSubscribe} className="space-y-3">

@@ -28,20 +28,20 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const faqs = [
     {
-      q: 'Quelles sont les franchises bagages autorisées ?',
-      a: 'Pour la classe Économie Premium, vous bénéficiez de 23 kg en soute et de 8 kg en cabine. Pour la classe Affaires et VIP Elite, vous bénéficiez de 32 kg en soute et 10 kg en cabine. Les bagages supplémentaires peuvent être souscrits en ligne pour 15 000 FCFA.',
+      q: 'Quelles sont les franchises bagages incluses ?',
+      a: 'Sur nos vols réguliers, vous bénéficiez de 23 kg de bagages en soute et de 7 kg en cabine inclus dans votre billet. Des bagages supplémentaires peuvent être ajoutés lors de votre réservation.',
     },
     {
-      q: 'Est-il possible de modifier ou annuler mon billet ?',
-      a: "Oui, tous nos billets sont modifiables sans frais jusqu'à 24h avant le départ (seule la différence tarifaire éventuelle s'applique). Les annulations sont remboursées sous forme d'avoir valable 1 an pour les billets Éco, et remboursées intégralement sur Mobile Money pour les classes Affaires et VIP.",
+      q: 'Quels documents présenter à l\'embarquement ?',
+      a: 'Présentez une pièce d\'identité officielle en cours de validité (CIP, Carte Nationale d\'Identité ou Passeport) ainsi que votre billet électronique ou carte d\'embarquement.',
     },
     {
-      q: 'Quelles sont les garanties en cas de retard de vol ?',
-      a: "Amazone Airlines garantit une ponctualité rigoureuse (98.7% d'indice de régularité). En cas de retard de plus de 45 minutes imputable à la compagnie, un bon de réduction de 20 000 FCFA vous est offert sur votre prochain vol, ainsi que des collations gratuites au salon d'aéroport.",
+      q: 'Quels sont les délais d\'enregistrement à l\'aéroport ?',
+      a: 'L\'enregistrement physique ouvre 2 heures avant le vol et ferme impérativement 30 minutes avant l\'heure de départ, à Cotonou-Cadjehoun comme à Parakou-Tourou.',
     },
     {
-      q: 'Comment s\'effectue l\'enregistrement à l\'aéroport ?',
-      a: "L'enregistrement physique à l'aéroport de Cotonou ou de Parakou ouvre 2 heures avant le vol et ferme 30 minutes avant le départ. Munissez-vous simplement de votre carte d'identité béninoise (CIP/CNI) ou de votre passeport ainsi que de la carte d'embarquement reçue par e-mail.",
+      q: 'Comment modifier ou annuler une réservation ?',
+      a: 'Les modifications de date sont possibles selon les conditions de votre classe tarifaire. Contactez notre assistance client au +229 21 97 97 97 ou adressez-vous à nos comptoirs d\'aéroport muni de votre référence de vol.',
     },
   ];
 

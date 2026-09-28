@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, MapPin, ChevronLeft, ChevronRight, Play, Pause, Compass, Sparkles, Plane } from 'lucide-react';
+import { ArrowRight, MapPin, ChevronLeft, ChevronRight, Compass, Sparkles, Plane } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { DESTINATIONS } from '../data';
 
@@ -10,8 +10,6 @@ interface DestinationsProps {
 export default function Destinations({ onSelectRoute }: DestinationsProps) {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [progress, setProgress] = useState(0);
 
   // Handle window resizing dynamically for correct visible card counts
   useEffect(() => {
@@ -38,35 +36,20 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    setProgress(0);
   };
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
-    setProgress(0);
   };
 
-  // Auto-play timer with smooth incremental progress bar update
+  // Smooth auto-rotation in background
   useEffect(() => {
-    if (!isPlaying) {
-      setProgress(0);
-      return;
-    }
-    const intervalTime = 5000; // 5 seconds per slide transition
-    const stepTime = 50; // update progress every 50ms for performance and smoothness
-    let elapsed = 0;
-
     const timer = setInterval(() => {
-      elapsed += stepTime;
-      setProgress((elapsed / intervalTime) * 100);
-      if (elapsed >= intervalTime) {
-        nextSlide();
-        elapsed = 0;
-      }
-    }, stepTime);
+      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, 5000);
 
     return () => clearInterval(timer);
-  }, [isPlaying, currentIndex, maxIndex]);
+  }, [maxIndex]);
 
   return (
     <section id="destinations" className="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
@@ -76,74 +59,18 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header Block with Integrated Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
-          <div className="space-y-4 max-w-2xl">
-            <span className="text-brand-blue font-mono font-bold text-xs uppercase tracking-widest bg-brand-blue/10 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
-              <Compass className="w-3.5 h-3.5 text-brand-blue animate-spin-slow" />
-              Nos Destinations Régionales
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-brand-dark tracking-tight">
-              Connecter le Bénin à la sous-région
-            </h2>
-            <p className="text-slate-500 text-sm sm:text-base">
-              Découvrez nos liaisons intérieures quotidiennes actives et notre plan de déploiement vers les grandes métropoles d'Afrique de l'Ouest.
-            </p>
-          </div>
-
-          {/* Professional Carousel Controls & Progress Info */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 bg-white p-3 rounded-2xl shadow-sm border border-slate-100 self-start md:self-auto min-w-[280px]">
-            {/* Auto-rotation status & indicator */}
-            <div className="flex items-center justify-between gap-3 px-2">
-              <button
-                onClick={() => setIsPlaying(!isPlaying)}
-                className="p-2 rounded-xl hover:bg-slate-50 text-slate-500 hover:text-brand-blue transition-all"
-                title={isPlaying ? "Mettre en pause l'auto-rotation" : "Lancer l'auto-rotation"}
-              >
-                {isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current" />}
-              </button>
-              
-              <div className="flex flex-col w-20">
-                <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-                  {isPlaying ? 'Auto-play' : 'Pause'}
-                </span>
-                {/* Slim progress bar track */}
-                <div className="w-full bg-slate-100 h-1 rounded-full overflow-hidden mt-1">
-                  <div
-                    className="bg-brand-blue h-full transition-all duration-75"
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hidden sm:block w-px h-8 bg-slate-100" />
-
-            {/* Slides Pagination Counter */}
-            <div className="flex items-center justify-between sm:justify-start gap-4">
-              <span className="text-xs font-mono font-bold text-slate-600 px-2">
-                0{currentIndex + 1} <span className="text-slate-300">/</span> 0{DESTINATIONS.length}
-              </span>
-
-              {/* Prev/Next Navigation triggers */}
-              <div className="flex gap-1.5">
-                <button
-                  onClick={prevSlide}
-                  className="p-2 rounded-xl bg-slate-50 hover:bg-brand-blue hover:text-white text-slate-700 transition-all shadow-sm border border-slate-100"
-                  aria-label="Destination précédente"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="p-2 rounded-xl bg-slate-50 hover:bg-brand-blue hover:text-white text-slate-700 transition-all shadow-sm border border-slate-100"
-                  aria-label="Destination suivante"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
+        {/* Clean Header Block */}
+        <div className="mb-12 max-w-2xl space-y-4">
+          <span className="text-brand-blue font-mono font-bold text-xs uppercase tracking-widest bg-brand-blue/10 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
+            <Compass className="w-3.5 h-3.5 text-brand-blue animate-spin-slow" />
+            Réseau de lignes
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-brand-dark tracking-tight">
+            Relier les pôles économiques du Bénin et de la région
+          </h2>
+          <p className="text-slate-500 text-sm sm:text-base">
+            Ligne active quotidienne entre Cotonou et Parakou, avec ouverture prochaine des corridors sous-régionaux majeurs.
+          </p>
         </div>
 
         {/* Carousel Container Viewport */}
@@ -261,24 +188,41 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
           </motion.div>
         </div>
 
-        {/* Carousel Visual Navigation Dots */}
-        <div className="flex justify-center items-center gap-2 mt-10">
-          {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => {
-                setCurrentIndex(idx);
-                setProgress(0);
-              }}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                currentIndex === idx
-                  ? 'w-8 bg-brand-blue'
-                  : 'w-2 bg-slate-300 hover:bg-slate-400'
-              }`}
-              title={`Aller à la diapositive ${idx + 1}`}
-              aria-label={`Aller à la diapositive ${idx + 1}`}
-            />
-          ))}
+        {/* Carousel Visual Navigation Dots & Arrows */}
+        <div className="flex justify-center items-center gap-4 mt-10">
+          <button
+            onClick={prevSlide}
+            className="p-2 rounded-full bg-white hover:bg-brand-blue hover:text-white text-slate-600 transition-all shadow-sm border border-slate-200"
+            aria-label="Destination précédente"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
+          <div className="flex items-center gap-2">
+            {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setCurrentIndex(idx);
+                }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  currentIndex === idx
+                    ? 'w-8 bg-brand-blue'
+                    : 'w-2 bg-slate-300 hover:bg-slate-400'
+                }`}
+                title={`Aller à la diapositive ${idx + 1}`}
+                aria-label={`Aller à la diapositive ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={nextSlide}
+            className="p-2 rounded-full bg-white hover:bg-brand-blue hover:text-white text-slate-600 transition-all shadow-sm border border-slate-200"
+            aria-label="Destination suivante"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
 
       </div>

@@ -58,6 +58,12 @@ export default function Hero({ onSearch }: HeroProps) {
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
+              {/* Eyebrow Contextual Tag */}
+              <div className="inline-flex items-center gap-2 bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow font-mono font-bold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full mb-1">
+                <Sparkles className="w-3.5 h-3.5 text-brand-yellow" />
+                <span>Liaison quotidienne directe Cotonou – Parakou</span>
+              </div>
+
               {/* Primary Headline with Text-Wrap Balance */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white leading-[1.12] tracking-tight drop-shadow-sm [text-wrap:balance]">
                 Reliez <span className="text-brand-yellow">Cotonou</span> et{' '}
@@ -66,7 +72,7 @@ export default function Hero({ onSearch }: HeroProps) {
 
               {/* Context description with strict reading measure */}
               <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed drop-shadow-sm [text-wrap:pretty]">
-                Évitez plus de 8 heures de route difficile. Voyagez dans le confort absolu de nos appareils ATR 42 et Falcon VIP avec une ponctualité rigoureuse et des standards de sécurité certifiés.
+                Évitez 8 à 10 heures de route. Voyagez sereinement à bord de nos appareils avec 3 vols quotidiens, une franchise de 23 kg en soute incluse et des départs réguliers depuis l'aéroport de Cadjehoun.
               </p>
             </motion.div>
 
@@ -81,15 +87,15 @@ export default function Hero({ onSearch }: HeroProps) {
                 <Clock className="w-4 h-4 text-brand-yellow shrink-0" />
                 <div>
                   <span className="font-bold text-white block">1h 15m</span>
-                  <span className="text-slate-400 text-[11px]">vs 8h de route</span>
+                  <span className="text-slate-400 text-[11px]">vs 8h à 10h de route</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5 bg-slate-900/60 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/10">
                 <ShieldCheck className="w-4 h-4 text-brand-yellow shrink-0" />
                 <div>
-                  <span className="font-bold text-white block">Certifié ANAC</span>
-                  <span className="text-slate-400 text-[11px]">Normes OACI</span>
+                  <span className="font-bold text-white block">Conformité ANAC</span>
+                  <span className="text-slate-400 text-[11px]">Aviation civile Bénin</span>
                 </div>
               </div>
 
@@ -97,7 +103,7 @@ export default function Hero({ onSearch }: HeroProps) {
                 <Luggage className="w-4 h-4 text-brand-yellow shrink-0" />
                 <div>
                   <span className="font-bold text-white block">23 kg inclus</span>
-                  <span className="text-slate-400 text-[11px]">En soute + cabine</span>
+                  <span className="text-slate-400 text-[11px]">Soute + 7 kg cabine</span>
                 </div>
               </div>
             </motion.div>

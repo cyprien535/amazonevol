@@ -10,23 +10,23 @@ interface VipSectionProps {
 export default function VipSection({ onSelectVip }: VipSectionProps) {
   const vipFeatures = [
     {
-      title: 'Salons Privés d\'Exception',
-      desc: 'Salons VIP exclusifs à Cotonou et Parakou avec rafraîchissements haut de gamme, Wi-Fi et discrétion absolue.',
+      title: 'Salons d\'attente dédiés',
+      desc: 'Espaces calmes et connectés à Cotonou et Parakou avant votre embarquement.',
       icon: Award,
     },
     {
-      title: 'Service Gastronomique Local',
-      desc: 'Menus d\'exception inspirés de la cuisine béninoise raffinée, élaborés à la demande par nos chefs partenaires.',
+      title: 'Service de bord personnalisé',
+      desc: 'Collations raffinées, rafraîchissements locaux et boissons adaptées à vos préférences de vol.',
       icon: GlassWater,
     },
     {
-      title: 'Flexibilité d\'Horaires Totale',
-      desc: 'Votre temps est précieux : l\'appareil décolle selon vos impératifs professionnels et personnels.',
+      title: 'Horaires à votre convenance',
+      desc: 'Votre agenda dicte le départ : ajustement en fonction de vos réunions et correspondances.',
       icon: Clock,
     },
     {
-      title: 'Sécurité & Escorte Diplomatique',
-      desc: 'Accréditations gouvernementales et protocoles de haute sécurité assurés par nos équipes chevronnées.',
+      title: 'Confidentialité et sécurité',
+      desc: 'Accompagnement protocolaire, discrétion absolue et formalités d\'embarquement prioritaires.',
       icon: Shield,
     },
   ];
@@ -82,13 +82,13 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
             <div className="space-y-3">
               <div className="inline-flex items-center gap-2 bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow font-mono font-bold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full">
                 <Award className="w-3.5 h-3.5" />
-                <span>Aviation d'affaires & Salons Exclusifs</span>
+                <span>Aviation d'affaires</span>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold tracking-tight text-white [text-wrap:balance]">
-                L'expérience VIP Amazone : discrétion et excellence
+                Vols privés et affrètement sur mesure
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed tracking-wide">
-                Optez pour le summum de l'aviation privée au Bénin. Que ce soit pour une mission gouvernementale, un rendez-vous d'affaires urgent ou un déplacement familial exclusif, bénéficiez d'un accompagnement personnalisé d'exception.
+                Pour vos déplacements d'urgence, missions officielles, délégations d'entreprise ou voyages en famille, affrétez un appareil selon vos horaires et vos contraintes.
               </p>
             </div>
 
@@ -126,7 +126,7 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
                 <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full group-active:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/45 to-transparent pointer-events-none" />
 
                 <Plane className="w-4 h-4 text-white -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                <span className="relative z-10">Demander une réservation VIP</span>
+                <span className="relative z-10">Demander un devis de vol privé</span>
                 <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform relative z-10" />
               </button>
 

@@ -12,11 +12,15 @@ interface NavbarProps {
 export default function Navbar({ onOpenBooking }: NavbarProps) {
   const [activeSection, setActiveSection] = useState('accueil');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolledPastHero, setScrolledPastHero] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['accueil', 'flotte', 'destinations'];
-      const scrollPosition = window.scrollY + 200;
+      const scrollY = window.scrollY;
+      setScrolledPastHero(scrollY > 300);
+
+      const sections = ['hero', 'avantages', 'flotte', 'destinations', 'vip'];
+      const scrollPosition = scrollY + 200;
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
@@ -36,10 +40,15 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { id: 'accueil', name: 'Accueil', href: '#accueil' },
+    { id: 'hero', name: 'Accueil', href: '#hero' },
+    { id: 'avantages', name: 'Avantages', href: '#avantages' },
     { id: 'flotte', name: 'Flotte', href: '#flotte' },
     { id: 'destinations', name: 'Destinations', href: '#destinations' },
   ];
+
+  if (!scrolledPastHero) {
+    return null;
+  }
 
   return (
     <>

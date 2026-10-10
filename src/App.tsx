@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import BookingFlow from './components/BookingFlow';
@@ -9,7 +9,6 @@ import VipSection from './components/VipSection';
 import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
 import LoginModal from './components/LoginModal';
-import FlightPathScroll from './components/FlightPathScroll';
 import { BookingState } from './types';
 import { X } from 'lucide-react';
 import { AnimatePresence } from 'motion/react';
@@ -18,7 +17,6 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState<BookingState | null>(null);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const flightJourneyContainerRef = useRef<HTMLDivElement>(null);
 
   // High-fidelity handlers to sync component actions
   const handleHeroSearch = (searchData: BookingState) => {
@@ -77,26 +75,20 @@ export default function App() {
 
       {/* Main Single Page Sections */}
       <main>
-        {/* 1. Hero Section & Flight Search Console */}
+        {/* 1. Hero Section with Video Background */}
         <Hero onSearch={handleHeroSearch} />
 
-        {/* Dynamic Flight Journey Scroll - From Advantages through VIP Experience */}
-        <div ref={flightJourneyContainerRef} className="relative">
-          {/* Animated Flight Path with Jet following scroll */}
-          <FlightPathScroll containerRef={flightJourneyContainerRef} />
+        {/* 2. Core Brand Advantages Grid */}
+        <Advantages />
 
-          {/* 2. Core Brand Advantages Grid */}
-          <Advantages />
+        {/* 3. Domestic Flight Fleet Specs */}
+        <Fleet onSelectAircraft={handleSelectAircraft} />
 
-          {/* 3. Domestic Flight Fleet Specs */}
-          <Fleet onSelectAircraft={handleSelectAircraft} />
+        {/* 4. Destination Map Grid (Flagship route & Regional extensions) */}
+        <Destinations onSelectRoute={handleSelectRoute} />
 
-          {/* 4. Destination Map Grid (Flagship route & Regional extensions) */}
-          <Destinations onSelectRoute={handleSelectRoute} />
-
-          {/* 5. High-end Dark VIP Experience showcase */}
-          <VipSection onSelectVip={handleSelectVip} />
-        </div>
+        {/* 5. High-end Dark VIP Experience showcase */}
+        <VipSection onSelectVip={handleSelectVip} />
       </main>
 
       {/* 6. Footer section */}

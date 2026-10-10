@@ -61,11 +61,11 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
         
         {/* Clean Header Block */}
         <div className="mb-12 max-w-2xl space-y-4">
-          <span className="text-brand-blue font-mono font-bold text-xs uppercase tracking-widest bg-brand-blue/10 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
+          <span className="text-brand-blue font-semibold text-xs uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
             <Compass className="w-3.5 h-3.5 text-brand-blue animate-spin-slow" />
             Réseau de lignes
           </span>
-          <h2 className="text-3xl sm:text-5xl font-display font-extrabold text-brand-dark tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-semibold text-brand-dark tracking-tight">
             Relier les pôles économiques du Bénin et de la région
           </h2>
           <p className="text-slate-500 text-sm sm:text-base">
@@ -136,7 +136,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                           <p className="text-[10px] uppercase font-mono tracking-widest text-brand-yellow font-bold">
                             Vol direct régulier
                           </p>
-                          <h3 className="text-lg font-bold text-white font-display">
+                          <h3 className="text-lg font-semibold text-white tracking-tight">
                             {dest.name}
                           </h3>
                         </div>
@@ -145,17 +145,17 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
 
                     {/* Card detailed body */}
                     <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
-                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                      <p className="text-gray-600 text-xs sm:text-sm leading-relaxed font-normal">
                         {dest.description}
                       </p>
 
                       {/* Footer block with time indicator & action buttons */}
                       <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                         <div className="flex flex-col">
-                          <span className="text-[10px] text-slate-600 uppercase font-mono tracking-wider font-bold">
+                          <span className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">
                             DURÉE DU VOL
                           </span>
-                          <span className="font-mono font-bold text-slate-800 text-sm">
+                          <span className="font-semibold text-gray-900 text-sm">
                             {dest.time}
                           </span>
                         </div>
@@ -168,7 +168,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                                 onSelectRoute(parts[0], parts[1]);
                               }
                             }}
-                            className="group relative overflow-hidden bg-gradient-to-r from-[#083B63] via-[#0A4D80] to-[#0D5B96] hover:from-[#0A4D80] hover:to-[#0F6EB4] text-white px-4 py-2.5 rounded-xl transition-all duration-300 shadow-md hover:shadow-[0_0_20px_rgba(10,77,128,0.5)] flex items-center gap-2 font-bold text-xs cursor-pointer active:scale-95 transform hover:-translate-y-0.5"
+                            className="group relative overflow-hidden bg-gradient-to-r from-[#083B63] via-[#0A4D80] to-[#0D5B96] hover:from-[#0A4D80] hover:to-[#0F6EB4] text-white px-5 py-2.5 rounded-full transition-colors duration-200 shadow-sm flex items-center gap-2 font-medium text-xs sm:text-sm cursor-pointer active:scale-98"
                             title={`Réserver un vol pour ${dest.name}`}
                           >
                             {/* Rayon de brillance */}

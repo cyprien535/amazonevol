@@ -81,13 +81,13 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               /* LOGIN STATE */
               <div className="space-y-6">
                 <div className="text-center space-y-2">
-                  <div className="w-12 h-12 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 rounded-full bg-brand-blue/10 text-brand-blue flex items-center justify-center mx-auto">
                     <LogIn className="w-6 h-6" />
                   </div>
-                  <h3 className="text-2xl font-display font-extrabold text-brand-dark">
+                  <h3 className="text-2xl font-semibold text-gray-900 tracking-tight">
                     Club Amazone Airlines
                   </h3>
-                  <p className="text-slate-500 text-sm">
+                  <p className="text-gray-600 text-sm font-normal">
                     Connectez-vous à votre espace fidélité pour gérer vos réservations et cumuler des Miles gratuits.
                   </p>
                 </div>

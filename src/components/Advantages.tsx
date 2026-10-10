@@ -54,12 +54,12 @@ export default function Advantages() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-[#0A4D80]/10 text-[#0A4D80] text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full">
+          <div className="inline-flex items-center gap-2 bg-[#0A4D80]/10 text-[#0A4D80] text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
             <Sparkles className="w-3.5 h-3.5 text-[#C69214]" />
             <span>Nos engagements</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-brand-dark tracking-tight [text-wrap:balance]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-dark tracking-tight [text-wrap:balance]">
             Pourquoi voyager avec Amazone Airlines ?
           </h2>
 
@@ -122,11 +122,11 @@ export default function Advantages() {
               {leftSteps.map((item, idx) => (
                 <motion.div
                   key={item.number}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-50px' }}
-                  transition={{ delay: idx * 0.15, duration: 0.5 }}
-                  className="relative bg-[#F4F7FB] border border-[#D4E0EE] rounded-3xl p-7 sm:p-9 shadow-sm hover:shadow-md transition-all duration-300 group"
+                  transition={{ delay: idx * 0.1, duration: 0.45, ease: 'easeOut' }}
+                  className="relative bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-7 sm:p-9 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 group"
                 >
                   {/* Top Pin matching the screenshot */}
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#0A4D80] border-2 border-white shadow-md flex items-center justify-center transition-transform group-hover:scale-110">
@@ -136,9 +136,9 @@ export default function Advantages() {
                   {/* Giant Outlined Number */}
                   <div className="mb-2">
                     <span
-                      className="text-4xl sm:text-5xl font-display font-black tracking-tight select-none block"
+                      className="text-4xl sm:text-5xl font-bold tracking-tighter select-none block"
                       style={{
-                        WebkitTextStroke: '2px #0A4D80',
+                        WebkitTextStroke: '1.5px #0A4D80',
                         color: 'transparent',
                       }}
                     >
@@ -147,12 +147,12 @@ export default function Advantages() {
                   </div>
 
                   {/* Headline */}
-                  <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900 mb-2 group-hover:text-[#0A4D80] transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 group-hover:text-[#0A4D80] transition-colors tracking-tight">
                     {item.title}
                   </h3>
 
                   {/* Body text */}
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
                     {item.description}
                   </p>
                 </motion.div>
@@ -164,11 +164,11 @@ export default function Advantages() {
               {rightSteps.map((item, idx) => (
                 <motion.div
                   key={item.number}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-50px' }}
-                  transition={{ delay: idx * 0.15 + 0.1, duration: 0.5 }}
-                  className="relative bg-[#F4F7FB] border border-[#D4E0EE] rounded-3xl p-7 sm:p-9 shadow-sm hover:shadow-md transition-all duration-300 group"
+                  transition={{ delay: idx * 0.1 + 0.08, duration: 0.45, ease: 'easeOut' }}
+                  className="relative bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl p-7 sm:p-9 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 group"
                 >
                   {/* Top Pin matching the screenshot */}
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#0A4D80] border-2 border-white shadow-md flex items-center justify-center transition-transform group-hover:scale-110">
@@ -178,9 +178,9 @@ export default function Advantages() {
                   {/* Giant Outlined Number */}
                   <div className="mb-2">
                     <span
-                      className="text-4xl sm:text-5xl font-display font-black tracking-tight select-none block"
+                      className="text-4xl sm:text-5xl font-bold tracking-tighter select-none block"
                       style={{
-                        WebkitTextStroke: '2px #0A4D80',
+                        WebkitTextStroke: '1.5px #0A4D80',
                         color: 'transparent',
                       }}
                     >
@@ -189,12 +189,12 @@ export default function Advantages() {
                   </div>
 
                   {/* Headline */}
-                  <h3 className="text-xl sm:text-2xl font-display font-bold text-slate-900 mb-2 group-hover:text-[#0A4D80] transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 group-hover:text-[#0A4D80] transition-colors tracking-tight">
                     {item.title}
                   </h3>
 
                   {/* Body text */}
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
                     {item.description}
                   </p>
                 </motion.div>

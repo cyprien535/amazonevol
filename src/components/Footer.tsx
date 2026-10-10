@@ -83,7 +83,7 @@ export default function Footer() {
 
           {/* Column 2: Quick Links (2 columns) */}
           <div className="lg:col-span-2 space-y-5">
-            <h4 className="text-white font-display font-bold text-sm uppercase tracking-wider">
+            <h4 className="text-white text-sm font-semibold uppercase tracking-wider">
               Navigation
             </h4>
             <ul className="space-y-2.5 text-sm">
@@ -91,7 +91,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="hover:text-brand-yellow hover:underline underline-offset-4 transition-colors"
+                    className="hover:text-brand-yellow hover:underline underline-offset-4 transition-colors font-normal text-slate-300 hover:text-white"
                   >
                     {link.name}
                   </a>
@@ -102,28 +102,28 @@ export default function Footer() {
 
           {/* Column 3: Contact & Support info (3 columns) */}
           <div className="lg:col-span-3 space-y-5">
-            <h4 className="text-white font-display font-bold text-sm uppercase tracking-wider">
+            <h4 className="text-white text-sm font-semibold uppercase tracking-wider">
               Aérogares & Contact
             </h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-brand-yellow shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-white block text-xs uppercase mb-0.5">Aérogares & Comptoirs</span>
-                  <span className="text-slate-400">Aéroport de Cadjehoun (Cotonou) & Aéroport de Tourou (Parakou), Bénin.</span>
+                  <span className="font-semibold text-white block text-xs uppercase mb-0.5 tracking-wider">Aérogares & Comptoirs</span>
+                  <span className="text-slate-400 font-normal">Aéroport de Cadjehoun (Cotonou) & Aéroport de Tourou (Parakou), Bénin.</span>
                 </div>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-brand-yellow shrink-0" />
                 <div>
-                  <span className="font-bold text-white block text-xs uppercase mb-0.5">Assistance client</span>
+                  <span className="font-semibold text-white block text-xs uppercase mb-0.5 tracking-wider">Assistance client</span>
                   <span className="text-slate-400 font-mono">+229 21 97 97 97</span>
                 </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-brand-yellow shrink-0" />
                 <div>
-                  <span className="font-bold text-white block text-xs uppercase mb-0.5">Email Support</span>
+                  <span className="font-semibold text-white block text-xs uppercase mb-0.5 tracking-wider">Email Support</span>
                   <span className="text-slate-400 font-mono">contact@amazoneairlines.bj</span>
                 </div>
               </li>
@@ -132,10 +132,10 @@ export default function Footer() {
 
           {/* Column 4: Newsletter Box (3 columns) */}
           <div className="lg:col-span-3 space-y-5">
-            <h4 className="text-white font-display font-bold text-sm uppercase tracking-wider">
+            <h4 className="text-white text-sm font-semibold uppercase tracking-wider">
               Newsletter Amazone
             </h4>
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-400 leading-relaxed font-normal">
               Inscrivez-vous pour recevoir nos informations de vols, ouvertures de lignes et offres spéciales.
             </p>
 
@@ -147,11 +147,11 @@ export default function Footer() {
                   placeholder="votre.email@domaine.bj"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 pr-12 text-sm text-white focus:border-brand-yellow focus:outline-none focus:ring-1 focus:ring-brand-yellow"
+                  className="w-full bg-white/5 border border-white/10 rounded-full px-5 py-3 pr-12 text-sm text-white focus:border-brand-yellow focus:outline-none focus:ring-1 focus:ring-brand-yellow transition-colors"
                 />
                 <button
                   type="submit"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 text-brand-yellow hover:text-white p-2 transition-colors"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-brand-yellow hover:text-white p-2 transition-colors cursor-pointer"
                   title="S'inscrire"
                 >
                   <Send className="w-4 h-4" />

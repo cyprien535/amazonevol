@@ -84,11 +84,11 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
           {/* Description Text & Grid (7 Columns) */}
           <div className="lg:col-span-7 space-y-7">
             <div className="space-y-3">
-              <div className="inline-flex items-center gap-2 bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow font-mono font-bold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full">
+              <div className="inline-flex items-center gap-2 bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow font-semibold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full">
                 <Award className="w-3.5 h-3.5" />
                 <span>Aviation d'affaires</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold tracking-tight text-white [text-wrap:balance]">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white [text-wrap:balance]">
                 Vols privés et affrètement sur mesure
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed tracking-wide">
@@ -101,15 +101,15 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
               {vipFeatures.map((item) => {
                 const IconComp = item.icon;
                 return (
-                  <div key={item.title} className="flex gap-3.5 bg-white/5 border border-white/10 p-4 rounded-xl">
+                  <div key={item.title} className="flex gap-3.5 bg-white/5 border border-white/10 p-5 rounded-2xl hover:border-white/20 transition-colors">
                     <div className="w-9 h-9 rounded-lg bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow flex items-center justify-center shrink-0 mt-0.5">
                       <IconComp className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-white text-sm font-display">
+                      <h3 className="font-semibold text-white text-sm tracking-tight">
                         {item.title}
                       </h3>
-                      <p className="text-slate-400 text-xs mt-1 leading-relaxed">
+                      <p className="text-slate-400 text-xs mt-1 leading-relaxed font-normal">
                         {item.desc}
                       </p>
                     </div>
@@ -124,11 +124,8 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
                 onClick={() => {
                   onSelectVip();
                 }}
-                className="group relative overflow-hidden bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B] text-white px-7 py-3.5 rounded-xl font-display font-extrabold text-base shadow-lg shadow-[#C69214]/25 hover:shadow-[0_0_30px_rgba(198,146,20,0.6)] border border-amber-200/30 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5 cursor-pointer"
+                className="group relative overflow-hidden bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B] text-white px-7 py-3 rounded-full font-medium text-sm shadow-md border border-amber-200/30 transition-colors duration-200 flex items-center justify-center gap-2.5 cursor-pointer active:scale-98"
               >
-                {/* Rayon de brillance au toucher/survol */}
-                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full group-active:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/45 to-transparent pointer-events-none" />
-
                 <Plane className="w-4 h-4 text-white -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
                 <span className="relative z-10">Demander un devis de vol privé</span>
                 <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform relative z-10" />

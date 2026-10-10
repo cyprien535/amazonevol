@@ -68,10 +68,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             {/* Left side: Contacts & FAQ (7 Columns on desktop) */}
             <div className="md:col-span-7 p-6 sm:p-8 overflow-y-auto max-h-[45vh] md:max-h-none border-b md:border-b-0 md:border-r border-slate-100 space-y-8">
               <div className="space-y-2">
-                <h3 className="text-2xl font-display font-extrabold text-brand-dark">
+                <h3 className="text-2xl font-semibold text-gray-900 tracking-tight">
                   Support & Foire Aux Questions
                 </h3>
-                <p className="text-slate-500 text-sm">
+                <p className="text-gray-600 text-sm font-normal">
                   Notre équipe est disponible 24h/24 pour répondre à toutes vos interrogations.
                 </p>
               </div>

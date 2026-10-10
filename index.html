@@ -3,17 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Security Headers & Policies for Google Safe Browsing -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self' 'unsafe-inline' https: data: blob:;" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+
+    <!-- SEO & Indexation -->
     <title>Amazone Airlines — Vols Cotonou - Parakou et Affrètement Privé au Bénin</title>
     <meta name="description" content="Liaison aérienne directe entre Cotonou et Parakou en 1h15 de vol. 3 rotations quotidiennes, 23 kg de bagages en soute inclus et affrètement d'affaires au Bénin." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://amazoneairlines.bj/" />
+    <link rel="icon" type="image/webp" href="/src/assets/images/logo.webp" />
+
+    <!-- Open Graph (Social Cards & Google Discover) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Amazone Airlines" />
+    <meta property="og:url" content="https://amazoneairlines.bj/" />
     <meta property="og:title" content="Amazone Airlines — Vols Cotonou - Parakou au Bénin" />
     <meta property="og:description" content="Liaison aérienne directe entre Cotonou et Parakou en 1h15 de vol. 3 rotations quotidiennes, 23 kg de bagages en soute inclus et affrètement d'affaires au Bénin." />
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Amazone Airlines — Vols Cotonou - Parakou & Aviation Privée" />
+    <meta name="twitter:description" content="Liaison aérienne directe entre Cotonou et Parakou en 1h15 de vol et affrètement privé au Bénin." />
+
+    <!-- Google Fonts CDN Secure Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org JSON-LD Structured Data for Google Safe Browsing / Trustworthiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Airline",
+      "name": "Amazone Airlines",
+      "alternateName": "Amazone Airlines Bénin",
+      "url": "https://amazoneairlines.bj",
+      "description": "Liaison aérienne directe entre Cotonou et Parakou en 1h15 de vol et affrètement privé au Bénin.",
+      "telephone": "+22921979797",
+      "email": "contact@amazoneairlines.bj",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cotonou",
+        "addressCountry": "BJ"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

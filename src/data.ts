@@ -6,6 +6,10 @@ import vipInteriorImg from './assets/images/private_jet_interior.webp';
 import charterImg from './assets/images/charter_private.webp';
 import logoImg from './assets/images/logo.webp';
 import planeCutoutImg from './assets/images/regenerated_image_1790604369886.png';
+import cotonouParakouImg from './assets/images/regenerated_image_1791894690440.png';
+import lagosRouteImg from './assets/images/dest_lagos_route_1791895181127.jpg';
+import abidjanRouteImg from './assets/images/dest_abidjan_route_1791895181797.jpg';
+import dakarRouteImg from './assets/images/dest_dakar_route_1791895182270.jpg';
 
 // Image assets bundled by Vite for production and development
 export const IMAGES = {
@@ -16,6 +20,10 @@ export const IMAGES = {
   charter: charterImg,
   logo: logoImg,
   planeCutout: planeCutoutImg,
+  cotonouParakou: cotonouParakouImg,
+  destLagos: lagosRouteImg,
+  destAbidjan: abidjanRouteImg,
+  destDakar: dakarRouteImg,
 };
 
 export const FLIGHTS_COTO_PARA: Flight[] = [
@@ -151,7 +159,7 @@ export const DESTINATIONS = [
     description: 'Notre liaison quotidienne directe. 3 vols par jour pour relier la capitale économique au Nord du pays en 1h15.',
     code: 'COO ↔ PKO',
     time: '1h 15m',
-    image: 'https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&q=80&w=600',
+    image: cotonouParakouImg,
   },
   {
     name: 'Cotonou ↔ Lagos',
@@ -159,7 +167,7 @@ export const DESTINATIONS = [
     description: 'Liaison directe vers le Nigéria en 45 minutes de vol. Facilitez vos affaires sans passer par la route transfrontalière.',
     code: 'COO ↔ LOS',
     time: '45m',
-    image: 'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&q=80&w=600',
+    image: lagosRouteImg,
   },
   {
     name: 'Cotonou ↔ Abidjan',
@@ -167,7 +175,7 @@ export const DESTINATIONS = [
     description: 'Connexion aérienne directe avec la Côte d\'Ivoire pour stimuler les partenariats régionaux et la mobilité commerciale.',
     code: 'COO ↔ ABJ',
     time: '1h 40m',
-    image: 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=600',
+    image: abidjanRouteImg,
   },
   {
     name: 'Cotonou ↔ Dakar',
@@ -175,7 +183,7 @@ export const DESTINATIONS = [
     description: 'Ouverture vers le Sénégal en vol direct pour connecter les deux grandes métropoles ouest-africaines.',
     code: 'COO ↔ DKR',
     time: '3h 30m',
-    image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=600',
+    image: dakarRouteImg,
   },
 ];
 

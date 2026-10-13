@@ -4,9 +4,9 @@ import {
   Sparkles,
   Plane,
   Clock,
-  ArrowRight,
   MapPin,
 } from 'lucide-react';
+import { IMAGES } from '../data';
 import ScrollStack from './ScrollStack';
 
 interface DestinationsProps {
@@ -34,8 +34,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
       ],
       airportFrom: 'Cotonou-Cadjehoun (COO)',
       airportTo: 'Parakou-Tourou (PKO)',
-      image:
-        'https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&q=80&w=1200',
+      image: IMAGES.cotonouParakou,
       imageAlt: 'Vue aérienne et appareils au départ de Cotonou vers Parakou',
     },
     {
@@ -57,8 +56,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
       ],
       airportFrom: 'Cotonou-Cadjehoun (COO)',
       airportTo: 'Lagos-Murtala Muhammed (LOS)',
-      image:
-        'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&q=80&w=1200',
+      image: IMAGES.destLagos,
       imageAlt: 'Métropole dynamique de Lagos, future liaison régionale directe',
     },
     {
@@ -80,8 +78,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
       ],
       airportFrom: 'Cotonou-Cadjehoun (COO)',
       airportTo: 'Abidjan-Félix-Houphouët (ABJ)',
-      image:
-        'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=1200',
+      image: IMAGES.destAbidjan,
       imageAlt: 'Liaison aérienne d’affaires entre Cotonou et Abidjan',
     },
     {
@@ -103,8 +100,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
       ],
       airportFrom: 'Cotonou-Cadjehoun (COO)',
       airportTo: 'Dakar-Blaise Diagne (DSS)',
-      image:
-        'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200',
+      image: IMAGES.destDakar,
       imageAlt: 'Corridor trans-africain Cotonou - Dakar en vol direct',
     },
   ];
@@ -130,14 +126,21 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
     return (
       <div
         key={route.index}
-        className="w-full overflow-hidden rounded-[24px] sm:rounded-[32px] bg-white border border-slate-200/90 shadow-xl shadow-slate-900/5 flex flex-col transition-all duration-300 relative group select-none"
+        onClick={() => {
+          if (isActive) {
+            handleBookRoute(route.name);
+          }
+        }}
+        className={`w-full overflow-hidden rounded-[24px] sm:rounded-[32px] bg-white border border-slate-200/90 shadow-xl shadow-slate-900/5 flex flex-col transition-all duration-300 relative group select-none ${
+          isActive ? 'cursor-pointer hover:border-brand-blue/40' : ''
+        }`}
       >
         {/* Uniform brand accent line at the top of each card */}
         <div className="h-1.5 w-full bg-gradient-to-r from-brand-blue via-brand-blue to-brand-gold" />
 
         <div className="w-full flex flex-col lg:flex-row items-stretch flex-1">
           {/* Left Side: Rich Route Copy & Flight Details */}
-          <div className="w-full lg:w-[57%] p-6 sm:p-9 lg:p-10 flex flex-col justify-between space-y-6">
+          <div className="w-full lg:w-[54%] p-6 sm:p-9 lg:p-10 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               {/* Top Bar: Number badge + Status Badge + IATA Code */}
               <div className="flex flex-wrap items-center justify-between gap-3">
@@ -200,9 +203,9 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                 ))}
               </div>
 
-              {/* Bottom Actions: Direct Booking Button */}
-              <div className="pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="text-xs text-slate-500 flex items-center gap-2">
+              {/* Bottom Info: Flight schedule information without button */}
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-brand-gold shrink-0" />
                   <span>
                     {isActive
@@ -210,53 +213,46 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                       : 'Pré-enregistrements ouverts pour cette ligne'}
                   </span>
                 </div>
-
-                {isActive ? (
-                  <button
-                    onClick={() => handleBookRoute(route.name)}
-                    className="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-blue-hover text-white text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow transition-all cursor-pointer group active:scale-95"
-                  >
-                    <Plane className="w-4 h-4 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    <span>Sélectionner ce vol</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                ) : (
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full border border-slate-200 transition-all cursor-pointer"
-                  >
-                    <span>Être informé du lancement</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                )}
               </div>
             </div>
           </div>
 
-          {/* Right Side: High-Resolution Scenic Route Image Asset */}
-          <div className="w-full lg:w-[43%] relative min-h-[260px] sm:min-h-[320px] lg:min-h-full overflow-hidden bg-slate-900">
+          {/* Right Side: Showcase Visual Asset (Reduced & Full View) */}
+          <div className="w-full lg:w-[46%] relative overflow-hidden bg-slate-950 flex flex-col justify-center items-center p-4 sm:p-6 lg:p-7 min-h-[260px] sm:min-h-[300px] lg:min-h-full">
+            {/* Atmospheric blurred ambient backdrop using the destination photo */}
             <img
               src={route.image}
-              alt={route.imageAlt}
-              width={750}
-              height={550}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 w-full h-full object-cover filter blur-2xl opacity-35 scale-125 pointer-events-none select-none"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/40 to-slate-950/70 pointer-events-none" />
 
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent lg:bg-gradient-to-l lg:from-transparent lg:to-slate-950/30" />
+            {/* Showcase Framed Image: Reduced & 100% Complete View Without Cropping */}
+            <div className="relative z-10 w-full flex flex-col items-center justify-center my-auto">
+              <div className="relative w-full rounded-2xl overflow-hidden border border-white/20 shadow-2xl shadow-black/70 bg-black/50 group-hover:border-white/35 transition-all duration-500">
+                <img
+                  src={route.image}
+                  alt={route.imageAlt}
+                  referrerPolicy="no-referrer"
+                  width={750}
+                  height={422}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto max-h-[280px] sm:max-h-[340px] lg:max-h-[380px] object-contain block transform group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+                />
 
-            {/* Floating Pills on image */}
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex justify-between items-end">
-              <div className="bg-brand-dark/85 backdrop-blur-md border border-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-mono font-medium shadow-xl flex items-center gap-2">
-                <Plane className="w-3.5 h-3.5 text-brand-yellow -rotate-45" />
-                <span>Vol direct • {route.time}</span>
-              </div>
+                {/* Floating Info Overlay inside/on bottom of framed image */}
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-3 sm:right-3 flex items-center justify-between gap-2 pointer-events-none">
+                  <div className="bg-brand-dark/90 backdrop-blur-md border border-white/20 text-white px-3 py-1 rounded-full text-[11px] sm:text-xs font-mono font-medium shadow-lg flex items-center gap-1.5">
+                    <Plane className="w-3.5 h-3.5 text-brand-yellow -rotate-45 shrink-0" />
+                    <span>Vol direct • {route.time}</span>
+                  </div>
 
-              <div className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-3 py-1 rounded-full text-[11px] font-mono font-bold shadow-md">
-                {route.airportTo}
+                  <div className="bg-black/70 backdrop-blur-md border border-white/25 text-white px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono font-semibold shadow-md truncate max-w-[180px]">
+                    {route.airportTo}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

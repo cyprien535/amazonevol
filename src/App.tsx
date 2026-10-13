@@ -6,6 +6,7 @@ import Advantages from './components/Advantages';
 import Fleet from './components/Fleet';
 import Destinations from './components/Destinations';
 import VipSection from './components/VipSection';
+import Partners from './components/Partners';
 import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
 import LoginModal from './components/LoginModal';
@@ -89,9 +90,12 @@ export default function App() {
 
         {/* 5. High-end Dark VIP Experience showcase */}
         <VipSection onSelectVip={handleSelectVip} />
+
+        {/* 6. Strategic Partners with OrbitImages */}
+        <Partners />
       </main>
 
-      {/* 6. Footer section */}
+      {/* 7. Footer section */}
       <Footer />
 
       {/* MODALS / OVERLAYS */}

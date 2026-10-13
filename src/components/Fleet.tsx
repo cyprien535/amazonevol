@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plane, Check, RotateCw } from 'lucide-react';
+import { Plane, Check } from 'lucide-react';
 import { FLEET } from '../data';
 import FlipCard from './FlipCard';
 
@@ -72,25 +72,14 @@ export default function Fleet({ onSelectAircraft }: FleetProps) {
                   </div>
 
                   {/* Body Content - Plane Name & Quick Description */}
-                  <div className="p-6">
+                  <div className="p-6 sm:p-7">
                     <h3 className="text-2xl font-semibold text-gray-900 group-hover:text-brand-blue transition-colors tracking-tight">
                       {plane.name}
                     </h3>
-                    <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed line-clamp-2 font-normal">
+                    <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-normal">
                       {plane.description}
                     </p>
                   </div>
-                </div>
-
-                {/* Bottom Bar: Interactive 3D Flip Hint */}
-                <div className="px-6 pb-6 pt-0 flex items-center justify-between border-t border-slate-100 pt-3">
-                  <span className="inline-flex items-center gap-1.5 text-xs text-brand-blue font-medium bg-blue-50/80 px-3 py-1.5 rounded-full">
-                    <RotateCw className="w-3.5 h-3.5" />
-                    <span>Survoler ou toucher pour retourner</span>
-                  </span>
-                  <span className="text-slate-500 font-mono text-xs font-semibold">
-                    {plane.capacity}
-                  </span>
                 </div>
               </div>
             );
@@ -102,10 +91,6 @@ export default function Fleet({ onSelectAircraft }: FleetProps) {
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-semibold text-brand-yellow uppercase tracking-wider bg-brand-yellow/15 border border-brand-yellow/30 px-3 py-1 rounded-full">
                       {plane.category}
-                    </span>
-                    <span className="text-xs text-slate-400 flex items-center gap-1 font-mono">
-                      <RotateCw className="w-3 h-3 text-slate-400" />
-                      <span>Spécifications 3D</span>
                     </span>
                   </div>
 

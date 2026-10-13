@@ -1,240 +1,306 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, MapPin, ChevronLeft, ChevronRight, Compass, Sparkles, Plane } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { DESTINATIONS } from '../data';
+import React from 'react';
+import {
+  Compass,
+  Sparkles,
+  Plane,
+  Clock,
+  ArrowRight,
+  MapPin,
+} from 'lucide-react';
+import ScrollStack from './ScrollStack';
 
 interface DestinationsProps {
   onSelectRoute: (departure: string, destination: string) => void;
 }
 
 export default function Destinations({ onSelectRoute }: DestinationsProps) {
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const routesData = [
+    {
+      index: '01',
+      name: 'Cotonou ↔ Parakou',
+      routeSubtitle: 'Aéroport Cadjehoun (COO) ↔ Aéroport de Tourou (PKO)',
+      status: 'active' as const,
+      statusLabel: 'Liaison Active Quotidienne',
+      code: 'COO ↔ PKO',
+      time: '1h 15m',
+      frequency: '3 rotations / jour',
+      priceFrom: '65 000 FCFA',
+      description:
+        'Notre ligne commerciale phare reliant la capitale économique au grand carrefour du Septentrion. Évitez les 8 à 10 heures d’épreuve sur la RNIE 2 grâce à nos 3 vols quotidiens programmés matin, midi et fin de journée.',
+      highlights: [
+        { label: 'Temps de vol', value: '1h 15m' },
+        { label: 'Fréquence', value: '3 vols / jour' },
+        { label: 'Tarif dès', value: '65 000 F' },
+      ],
+      airportFrom: 'Cotonou-Cadjehoun (COO)',
+      airportTo: 'Parakou-Tourou (PKO)',
+      image:
+        'https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&q=80&w=1200',
+      imageAlt: 'Vue aérienne et appareils au départ de Cotonou vers Parakou',
+    },
+    {
+      index: '02',
+      name: 'Cotonou ↔ Lagos',
+      routeSubtitle: 'Aéroport Cadjehoun (COO) ↔ Murtala Muhammed (LOS)',
+      status: 'upcoming' as const,
+      statusLabel: 'Corridor Régional • Bientôt disponible',
+      code: 'COO ↔ LOS',
+      time: '45m',
+      frequency: 'Corridor express d’affaires',
+      priceFrom: 'Tarif d’ouverture bientôt',
+      description:
+        'Liaison directe express vers la première place financière et commerciale du Nigéria. Franchissez la frontière en 45 minutes de vol sans subir les longues heures d’embouteillages et formalités terrestres de Sèmè-Kraké.',
+      highlights: [
+        { label: 'Temps de vol', value: '45 min' },
+        { label: 'Gain frontière', value: '+6 heures' },
+        { label: 'Liaison', value: 'Express Affaires' },
+      ],
+      airportFrom: 'Cotonou-Cadjehoun (COO)',
+      airportTo: 'Lagos-Murtala Muhammed (LOS)',
+      image:
+        'https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?auto=format&fit=crop&q=80&w=1200',
+      imageAlt: 'Métropole dynamique de Lagos, future liaison régionale directe',
+    },
+    {
+      index: '03',
+      name: 'Cotonou ↔ Abidjan',
+      routeSubtitle: 'Aéroport Cadjehoun (COO) ↔ Félix-Houphouët-Boigny (ABJ)',
+      status: 'upcoming' as const,
+      statusLabel: 'Axe Stratégique UEMOA • Bientôt disponible',
+      code: 'COO ↔ ABJ',
+      time: '1h 40m',
+      frequency: 'Vols directs régionaux',
+      priceFrom: 'Tarif d’ouverture bientôt',
+      description:
+        'Connectez directement le Bénin à la locomotive économique francophone d’Afrique de l’Ouest. Développez vos partenariats, conventions d’entreprises et échanges commerciaux avec la Côte d’Ivoire en toute fluidité.',
+      highlights: [
+        { label: 'Temps de vol', value: '1h 40m' },
+        { label: 'Réseau', value: 'Espace UEMOA' },
+        { label: 'Confort', value: 'Cabine spacieuse' },
+      ],
+      airportFrom: 'Cotonou-Cadjehoun (COO)',
+      airportTo: 'Abidjan-Félix-Houphouët (ABJ)',
+      image:
+        'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=1200',
+      imageAlt: 'Liaison aérienne d’affaires entre Cotonou et Abidjan',
+    },
+    {
+      index: '04',
+      name: 'Cotonou ↔ Dakar',
+      routeSubtitle: 'Aéroport Cadjehoun (COO) ↔ Blaise Diagne (DSS)',
+      status: 'upcoming' as const,
+      statusLabel: 'Grande Liaison Panafricaine • Bientôt disponible',
+      code: 'COO ↔ DKR',
+      time: '3h 30m',
+      frequency: 'Vols directs sans escale',
+      priceFrom: 'Tarif d’ouverture bientôt',
+      description:
+        'Ouverture d’une liaison directe vers le Sénégal reliant deux capitales côtières phares. Conçue pour les délégations institutionnelles, opérateurs économiques et voyageurs fréquents en quête de ponctualité et d’efficacité.',
+      highlights: [
+        { label: 'Temps de vol', value: '3h 30m' },
+        { label: 'Trajet', value: 'Direct sans escale' },
+        { label: 'Service', value: 'Prestations VIP' },
+      ],
+      airportFrom: 'Cotonou-Cadjehoun (COO)',
+      airportTo: 'Dakar-Blaise Diagne (DSS)',
+      image:
+        'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200',
+      imageAlt: 'Corridor trans-africain Cotonou - Dakar en vol direct',
+    },
+  ];
 
-  // Handle window resizing dynamically for correct visible card counts
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const getVisibleCount = () => {
-    if (windowWidth < 640) return 1;
-    if (windowWidth < 1024) return 2;
-    return 3;
-  };
-
-  const visibleCount = getVisibleCount();
-  const maxIndex = Math.max(0, DESTINATIONS.length - visibleCount);
-
-  // Keep index within bounds if resized
-  useEffect(() => {
-    if (currentIndex > maxIndex) {
-      setCurrentIndex(maxIndex);
+  const handleBookRoute = (routeName: string) => {
+    if (routeName.includes('Parakou')) {
+      onSelectRoute('Cotonou', 'Parakou');
+      const bookingEl = document.getElementById('booking') || document.getElementById('hero');
+      if (bookingEl) {
+        bookingEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      const contactEl = document.getElementById('footer') || document.getElementById('hero');
+      if (contactEl) {
+        contactEl.scrollIntoView({ behavior: 'smooth' });
+      }
     }
-  }, [visibleCount, maxIndex, currentIndex]);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
-  };
+  const renderedCards = routesData.map((route) => {
+    const isActive = route.status === 'active';
 
-  // Smooth auto-rotation in background
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    }, 5000);
+    return (
+      <div
+        key={route.index}
+        className="w-full overflow-hidden rounded-[24px] sm:rounded-[32px] bg-white border border-slate-200/90 shadow-xl shadow-slate-900/5 flex flex-col transition-all duration-300 relative group select-none"
+      >
+        {/* Uniform brand accent line at the top of each card */}
+        <div className="h-1.5 w-full bg-gradient-to-r from-brand-blue via-brand-blue to-brand-gold" />
 
-    return () => clearInterval(timer);
-  }, [maxIndex]);
+        <div className="w-full flex flex-col lg:flex-row items-stretch flex-1">
+          {/* Left Side: Rich Route Copy & Flight Details */}
+          <div className="w-full lg:w-[57%] p-6 sm:p-9 lg:p-10 flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              {/* Top Bar: Number badge + Status Badge + IATA Code */}
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-9 h-9 rounded-xl bg-brand-blue/10 text-brand-blue font-mono font-bold text-xs flex items-center justify-center border border-brand-blue/20">
+                    {route.index}
+                  </span>
+
+                  {isActive ? (
+                    <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] sm:text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-xs">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      {route.statusLabel}
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-800 border border-amber-200 text-[11px] sm:text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-xs">
+                      <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
+                      {route.statusLabel}
+                    </span>
+                  )}
+                </div>
+
+                {/* IATA Airport Route Code */}
+                <span className="bg-slate-100 text-slate-700 border border-slate-200 text-xs font-mono font-bold px-3 py-1 rounded-full tracking-wider">
+                  {route.code}
+                </span>
+              </div>
+
+              {/* Main Route Title & Subtitle */}
+              <div>
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-brand-dark leading-tight">
+                  {route.name}
+                </h3>
+                <p className="text-xs sm:text-sm font-mono mt-1.5 flex items-center gap-1.5 text-brand-gold">
+                  <MapPin className="w-3.5 h-3.5 text-brand-gold shrink-0" />
+                  <span>{route.routeSubtitle}</span>
+                </p>
+              </div>
+
+              {/* Route Descriptive Body */}
+              <p className="text-slate-600 text-xs sm:text-sm lg:text-[15px] leading-relaxed font-normal">
+                {route.description}
+              </p>
+            </div>
+
+            {/* Highlights Row: 3 Metrics */}
+            <div className="space-y-4 pt-2">
+              <div className="grid grid-cols-3 gap-2.5 sm:gap-3">
+                {route.highlights.map((h, hIdx) => (
+                  <div
+                    key={hIdx}
+                    className="bg-slate-50 border border-slate-200/80 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl"
+                  >
+                    <p className="text-[10px] sm:text-[11px] uppercase tracking-wider font-mono text-slate-500 truncate">
+                      {h.label}
+                    </p>
+                    <p className="text-xs sm:text-sm lg:text-base font-bold font-mono text-brand-dark mt-0.5 truncate">
+                      {h.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bottom Actions: Direct Booking Button */}
+              <div className="pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="text-xs text-slate-500 flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-brand-gold shrink-0" />
+                  <span>
+                    {isActive
+                      ? '3 vols par jour • Cotonou ↔ Parakou'
+                      : 'Pré-enregistrements ouverts pour cette ligne'}
+                  </span>
+                </div>
+
+                {isActive ? (
+                  <button
+                    onClick={() => handleBookRoute(route.name)}
+                    className="inline-flex items-center justify-center gap-2 bg-brand-blue hover:bg-brand-blue-hover text-white text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow transition-all cursor-pointer group active:scale-95"
+                  >
+                    <Plane className="w-4 h-4 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <span>Sélectionner ce vol</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                ) : (
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full border border-slate-200 transition-all cursor-pointer"
+                  >
+                    <span>Être informé du lancement</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side: High-Resolution Scenic Route Image Asset */}
+          <div className="w-full lg:w-[43%] relative min-h-[260px] sm:min-h-[320px] lg:min-h-full overflow-hidden bg-slate-900">
+            <img
+              src={route.image}
+              alt={route.imageAlt}
+              width={750}
+              height={550}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out"
+            />
+
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent lg:bg-gradient-to-l lg:from-transparent lg:to-slate-950/30" />
+
+            {/* Floating Pills on image */}
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex justify-between items-end">
+              <div className="bg-brand-dark/85 backdrop-blur-md border border-white/20 text-white px-3.5 py-1.5 rounded-full text-xs font-mono font-medium shadow-xl flex items-center gap-2">
+                <Plane className="w-3.5 h-3.5 text-brand-yellow -rotate-45" />
+                <span>Vol direct • {route.time}</span>
+              </div>
+
+              <div className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-3 py-1 rounded-full text-[11px] font-mono font-bold shadow-md">
+                {route.airportTo}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  });
 
   return (
-    <section id="destinations" className="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
-      {/* Decorative premium radial gradients */}
-      <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-brand-blue/5 rounded-full filter blur-[140px] pointer-events-none"></div>
-      <div className="absolute bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-brand-yellow/5 rounded-full filter blur-[140px] pointer-events-none"></div>
+    <section id="destinations" className="py-24 bg-brand-surface border-y border-brand-border/60 relative overflow-hidden">
+      {/* Decorative ambient background glows */}
+      <div className="absolute top-[15%] left-[-8%] w-[550px] h-[550px] bg-brand-blue/5 rounded-full filter blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[-8%] w-[550px] h-[550px] bg-brand-yellow/5 rounded-full filter blur-[150px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Clean Header Block */}
-        <div className="mb-12 max-w-2xl space-y-4">
-          <span className="text-brand-blue font-semibold text-xs uppercase tracking-wider bg-brand-blue/10 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
+          <div className="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
             <Compass className="w-3.5 h-3.5 text-brand-blue animate-spin-slow" />
-            Réseau de lignes
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-semibold text-brand-dark tracking-tight">
-            Relier les pôles économiques du Bénin et de la région
+            <span>Réseau de lignes</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-dark tracking-tight [text-wrap:balance]">
+            Relier les pôles économiques du Bénin et de la sous-région
           </h2>
-          <p className="text-slate-500 text-sm sm:text-base">
-            Ligne active quotidienne entre Cotonou et Parakou, avec ouverture prochaine des corridors sous-régionaux majeurs.
+
+          <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
+            Liaison active quotidienne entre Cotonou et Parakou en 1h15, avec ouverture progressive des corridors ouest-africains stratégiques.
           </p>
         </div>
 
-        {/* Carousel Container Viewport */}
-        <div className="overflow-hidden p-2 -m-2">
-          <motion.div
-            className="flex gap-6 sm:gap-8"
-            animate={{ x: `-${currentIndex * (100 / DESTINATIONS.length)}%` }}
-            transition={{ type: 'spring', stiffness: 180, damping: 25 }}
-            style={{
-              width: `${(DESTINATIONS.length / visibleCount) * 100}%`,
-            }}
-          >
-            {DESTINATIONS.map((dest, index) => {
-              const isRouteActive = dest.status === 'active';
-              return (
-                <div
-                  key={dest.name}
-                  style={{ width: `${100 / DESTINATIONS.length}%` }}
-                  className="px-1"
-                >
-                  <motion.div
-                    className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-brand-blue/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group h-full relative"
-                    whileHover={{ y: -4 }}
-                  >
-                    {/* Cinematic Card Image with Status Badge */}
-                    <div className="relative h-56 sm:h-60 overflow-hidden bg-slate-100">
-                      <img
-                        src={dest.image}
-                        alt={dest.name}
-                        width={600}
-                        height={400}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-                        referrerPolicy="no-referrer"
-                      />
-                      
-                      {/* Premium gradient mesh */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent"></div>
-
-                      {/* Top floating badge panel */}
-                      <div className="absolute top-4 left-4 right-4 flex justify-between items-start">
-                        {isRouteActive ? (
-                          <span className="bg-emerald-800 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-md">
-                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-                            Liaison Active
-                          </span>
-                        ) : (
-                          <span className="bg-slate-950/80 backdrop-blur-md text-brand-yellow text-[10px] font-bold px-3 py-1 rounded-full border border-white/10 uppercase tracking-wider flex items-center gap-1 shadow-md">
-                            <Sparkles className="w-3 h-3 text-brand-yellow" />
-                            Bientôt disponible
-                          </span>
-                        )}
-
-                        <span className="bg-white/15 backdrop-blur-md text-white border border-white/20 text-[11px] font-mono font-bold px-2.5 py-1 rounded-full">
-                          {dest.code}
-                        </span>
-                      </div>
-
-                      {/* Flight Route Code Overlay at Bottom of Image */}
-                      <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-                        <div className="space-y-0.5">
-                          <p className="text-[10px] uppercase font-mono tracking-widest text-brand-yellow font-bold">
-                            Vol direct régulier
-                          </p>
-                          <h3 className="text-lg font-semibold text-white tracking-tight">
-                            {dest.name}
-                          </h3>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Card detailed body */}
-                    <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
-                      <p className="text-gray-600 text-xs sm:text-sm leading-relaxed font-normal">
-                        {dest.description}
-                      </p>
-
-                      {/* Footer block with time indicator & action buttons */}
-                      <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                        <div className="flex flex-col">
-                          <span className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">
-                            DURÉE DU VOL
-                          </span>
-                          <span className="font-semibold text-gray-900 text-sm">
-                            {dest.time}
-                          </span>
-                        </div>
-                        
-                        {isRouteActive ? (
-                          <button
-                            onClick={() => {
-                              const parts = dest.name.split(' ↔ ');
-                              if (parts.length === 2) {
-                                onSelectRoute(parts[0], parts[1]);
-                              }
-                            }}
-                            className="group relative overflow-hidden bg-gradient-to-r from-[#083B63] via-[#0A4D80] to-[#0D5B96] hover:from-[#0A4D80] hover:to-[#0F6EB4] text-white px-5 py-2.5 rounded-full transition-colors duration-200 shadow-sm flex items-center gap-2 font-medium text-xs sm:text-sm cursor-pointer active:scale-98"
-                            title={`Réserver un vol pour ${dest.name}`}
-                          >
-                            {/* Rayon de brillance */}
-                            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full group-active:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
-
-                            <Plane className="w-3.5 h-3.5 text-white -rotate-45 group-hover:translate-x-0.5 transition-transform" />
-                            <span className="relative z-10">Réserver un vol</span>
-                            <ArrowRight className="w-3.5 h-3.5 text-[#C69214] group-hover:translate-x-1 transition-transform relative z-10" />
-                          </button>
-                        ) : (
-                          <span className="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-full uppercase tracking-wider">
-                            En ouverture
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              );
-            })}
-          </motion.div>
-        </div>
-
-        {/* Carousel Visual Navigation Dots & Arrows */}
-        <div className="flex justify-center items-center gap-2 mt-8">
-          <button
-            onClick={prevSlide}
-            className="w-10 h-10 rounded-full bg-white hover:bg-brand-blue hover:text-white text-slate-700 transition-all shadow-sm border border-slate-200 flex items-center justify-center cursor-pointer active:scale-95"
-            aria-label="Destination précédente"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-
-          <div className="flex items-center">
-            {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => {
-                  setCurrentIndex(idx);
-                }}
-                className="w-10 h-11 flex items-center justify-center p-2 group cursor-pointer"
-                title={`Aller à la diapositive ${idx + 1}`}
-                aria-label={`Aller à la diapositive ${idx + 1}`}
-              >
-                <span
-                  className={`h-2 rounded-full transition-all duration-300 block ${
-                    currentIndex === idx
-                      ? 'w-8 bg-brand-blue'
-                      : 'w-2.5 bg-slate-300 group-hover:bg-slate-400'
-                  }`}
-                />
-              </button>
-            ))}
-          </div>
-
-          <button
-            onClick={nextSlide}
-            className="w-10 h-10 rounded-full bg-white hover:bg-brand-blue hover:text-white text-slate-700 transition-all shadow-sm border border-slate-200 flex items-center justify-center cursor-pointer active:scale-95"
-            aria-label="Destination suivante"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-
+        {/* ScrollStack Component Integration on Destinations */}
+        <ScrollStack
+          cards={renderedCards}
+          useWindowScroll={true}
+          itemDistance={95}
+          itemScale={0.035}
+          itemStackDistance={26}
+          stackPosition="18%"
+          scaleEndPosition="8%"
+          baseScale={0.88}
+          blurAmount={0}
+        />
       </div>
     </section>
   );
 }
-

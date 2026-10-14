@@ -1,13 +1,13 @@
 import React from 'react';
 import {
   Compass,
-  Sparkles,
   Plane,
   Clock,
   MapPin,
 } from 'lucide-react';
 import { IMAGES } from '../data';
 import ScrollStack from './ScrollStack';
+import LiquidChrome from './LiquidChrome';
 
 interface DestinationsProps {
   onSelectRoute: (departure: string, destination: string) => void;
@@ -109,38 +109,34 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
             handleBookRoute(route.name);
           }
         }}
-        className={`w-full overflow-hidden rounded-[24px] sm:rounded-[32px] bg-white border border-slate-200/90 shadow-xl shadow-slate-900/5 flex flex-col transition-all duration-300 relative group select-none ${
-          isActive ? 'cursor-pointer hover:border-brand-blue/40' : ''
+        className={`w-full overflow-hidden rounded-[24px] sm:rounded-[32px] bg-slate-100/90 border border-slate-200/90 shadow-2xl shadow-slate-900/10 flex flex-col transition-all duration-300 relative group select-none ${
+          isActive ? 'cursor-pointer hover:border-brand-blue/50' : ''
         }`}
       >
-        {/* Uniform brand accent line at the top of each card */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-brand-blue via-brand-blue to-brand-gold" />
+        {/* Animated LiquidChrome Background */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+          <LiquidChrome
+            baseColor={[0.1, 0.1, 0.1]}
+            speed={0.4}
+            amplitude={0.6}
+            frequencyX={2.5}
+            frequencyY={1.5}
+            interactive={true}
+            className="w-full h-full opacity-60 group-hover:opacity-80 transition-opacity duration-700"
+          />
+          {/* Luminous frosted glass wash to ensure text readability while letting chrome waves ripple underneath */}
+          <div className="absolute inset-0 bg-white/75 backdrop-blur-[2px] transition-colors group-hover:bg-white/65 pointer-events-none" />
+        </div>
 
-        <div className="w-full flex flex-col lg:flex-row items-stretch flex-1">
+        {/* Uniform brand accent line at the top of each card */}
+        <div className="h-1.5 w-full bg-gradient-to-r from-brand-blue via-brand-blue to-brand-gold relative z-10" />
+
+        <div className="w-full flex flex-col lg:flex-row items-stretch flex-1 relative z-10">
           {/* Left Side: Rich Route Copy & Flight Details */}
           <div className="w-full lg:w-[54%] p-6 sm:p-9 lg:p-10 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
-              {/* Top Bar: Number badge + Status Badge + IATA Code */}
-              <div className="flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  <span className="w-9 h-9 rounded-xl bg-brand-blue/10 text-brand-blue font-mono font-bold text-xs flex items-center justify-center border border-brand-blue/20">
-                    {route.index}
-                  </span>
-
-                  {isActive ? (
-                    <span className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] sm:text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-xs">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      {route.statusLabel}
-                    </span>
-                  ) : (
-                    <span className="inline-flex items-center gap-1.5 bg-amber-50 text-amber-800 border border-amber-200 text-[11px] sm:text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-xs">
-                      <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
-                      {route.statusLabel}
-                    </span>
-                  )}
-                </div>
-
-                {/* IATA Airport Route Code */}
+              {/* Top Bar: IATA Route Code */}
+              <div className="flex items-center justify-between">
                 <span className="bg-slate-100 text-slate-700 border border-slate-200 text-xs font-mono font-bold px-3 py-1 rounded-full tracking-wider">
                   {route.code}
                 </span>
@@ -169,7 +165,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
                 {route.highlights.map((h, hIdx) => (
                   <div
                     key={hIdx}
-                    className="bg-slate-50 border border-slate-200/80 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl"
+                    className="bg-white/85 backdrop-blur-sm border border-slate-200/90 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl shadow-xs"
                   >
                     <p className="text-[10px] sm:text-[11px] uppercase tracking-wider font-mono text-slate-500 truncate">
                       {h.label}
@@ -182,7 +178,7 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
               </div>
 
               {/* Bottom Info: Flight schedule information without button */}
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <div className="pt-3 border-t border-slate-200/70 flex items-center justify-between text-xs text-slate-500">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-brand-gold shrink-0" />
                   <span>
@@ -195,8 +191,8 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
             </div>
           </div>
 
-          {/* Right Side: Showcase Visual Asset (Reduced & Full View) */}
-          <div className="w-full lg:w-[46%] relative overflow-hidden bg-slate-950 flex flex-col justify-center items-center p-4 sm:p-6 lg:p-7 min-h-[260px] sm:min-h-[300px] lg:min-h-full">
+          {/* Right Side: Showcase Visual Asset (Hidden on mobile and tablet, displayed only on PC / lg screens) */}
+          <div className="hidden lg:flex lg:w-[46%] relative overflow-hidden bg-slate-950 flex-col justify-center items-center lg:p-7 lg:min-h-full">
             {/* Atmospheric blurred ambient backdrop using the destination photo */}
             <img
               src={route.image}

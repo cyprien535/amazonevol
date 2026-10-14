@@ -13,6 +13,7 @@ import LoginModal from './components/LoginModal';
 import { BookingState } from './types';
 import { X } from 'lucide-react';
 import { AnimatePresence } from 'motion/react';
+import CustomCursor from './components/CustomCursor';
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState<BookingState | null>(null);
@@ -64,6 +65,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-brand-blue selection:text-brand-yellow">
+      {/* 4. Motion Design: Fluid Custom Cursor with Ambient Spotlight on Desktop */}
+      <CustomCursor />
       
       {/* Sticky Premium Navbar */}
       <Navbar

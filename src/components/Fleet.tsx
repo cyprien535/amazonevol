@@ -1,7 +1,9 @@
 import React from 'react';
 import { Plane, Check } from 'lucide-react';
+import { motion } from 'motion/react';
 import { FLEET } from '../data';
 import FlipCard from './FlipCard';
+import MagneticButton from './MagneticButton';
 
 interface FleetProps {
   onSelectAircraft: (category: string) => void;
@@ -15,8 +17,14 @@ export default function Fleet({ onSelectAircraft }: FleetProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        {/* Motion 2: Section Header with Scroll Reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+        >
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-brand-blue/10 text-brand-blue text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
               <Plane className="w-3.5 h-3.5 transform -rotate-45" />
@@ -32,19 +40,20 @@ export default function Fleet({ onSelectAircraft }: FleetProps) {
             </p>
           </div>
 
+          {/* Motion 3: Magnetic CTA button with light shimmer */}
           <div className="shrink-0 flex items-center gap-3">
-            <button
+            <MagneticButton
               onClick={() => onSelectAircraft('Ligne Régulière Domestique')}
-              className="bg-brand-blue hover:bg-[#005282] text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium shadow-sm hover:shadow transition-colors duration-200 cursor-pointer"
+              className="bg-brand-blue hover:bg-[#005282] text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium shadow-sm hover:shadow transition-colors duration-200"
             >
               Voir les vols réguliers
-            </button>
+            </MagneticButton>
           </div>
-        </div>
+        </motion.div>
 
         {/* Fleet Cards Grid with React Bits FlipCard Integration */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 justify-items-center">
-          {FLEET.map((plane) => {
+          {FLEET.map((plane, planeIdx) => {
             const isVipOrCharter = plane.category.includes('VIP') || plane.category.includes('Charter');
 
             const frontFace = (
@@ -164,7 +173,18 @@ export default function Fleet({ onSelectAircraft }: FleetProps) {
             );
 
             return (
-              <div key={plane.name} className="w-full flex justify-center">
+              <motion.div
+                key={plane.name}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{
+                  duration: 0.65,
+                  delay: planeIdx * 0.15,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="w-full flex justify-center"
+              >
                 <FlipCard
                   front={frontFace}
                   back={backFace}
@@ -191,7 +211,7 @@ export default function Fleet({ onSelectAircraft }: FleetProps) {
                   shadowOpacity={0.18}
                   className="w-full max-w-sm"
                 />
-              </div>
+              </motion.div>
             );
           })}
         </div>

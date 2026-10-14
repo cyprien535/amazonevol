@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Plane } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { IMAGES } from '../data';
+import MagneticButton from './MagneticButton';
 
 interface NavbarProps {
   onOpenBooking: () => void;
@@ -107,13 +108,13 @@ export default function Navbar({ onOpenBooking }: NavbarProps) {
 
               {/* Right Action Button: Réserver un vol */}
               <div className="flex items-center gap-3 shrink-0">
-                <button
+                <MagneticButton
                   onClick={onOpenBooking}
-                  className="px-5 py-2.5 rounded-none text-white text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer active:scale-98 flex items-center gap-2 shadow-sm bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B]"
+                  className="px-5 py-2.5 rounded-none text-white text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer shadow-sm bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B]"
                 >
                   <Plane className="w-3.5 h-3.5 text-white -rotate-45" />
                   <span>Réserver un vol</span>
-                </button>
+                </MagneticButton>
 
                 {/* Mobile Hamburger Button */}
                 <button

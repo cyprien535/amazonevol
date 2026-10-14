@@ -3,6 +3,7 @@ import { Menu, X, Plane } from 'lucide-react';
 import { motion } from 'motion/react';
 import { BookingState } from '../types';
 import { IMAGES } from '../data';
+import MagneticButton from './MagneticButton';
 
 interface HeroProps {
   onSearch: (searchData: BookingState) => void;
@@ -166,37 +167,52 @@ export default function Hero({ onSearch }: HeroProps) {
         {/* Main Content Area */}
         <div className="flex-1 flex items-center justify-center px-4">
           <div className="flex flex-col items-center text-center -mt-24 sm:-mt-44 md:-mt-80">
-            {/* Large two-line heading with overlapping effect */}
-            <div className="flex flex-col items-center select-none">
+            {/* Motion 2: Staggered reveal for Hero typography */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col items-center select-none"
+            >
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-normal text-slate-500 leading-none tracking-tighter drop-shadow-sm">
                 Prestige.
               </h1>
               <h2 className="text-6xl md:text-7xl lg:text-8xl font-semibold leading-none tracking-tighter -mt-[12px] text-brand-dark drop-shadow-sm">
                 Accessible<span className="text-brand-yellow">.</span>
               </h2>
-            </div>
+            </motion.div>
 
-            {/* Subtitle in French matching Site Purpose */}
-            <p className="text-base sm:text-lg md:text-xl text-slate-700 max-w-2xl text-center mt-5 mb-8 font-normal leading-relaxed">
+            {/* Motion 2: Staggered Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-base sm:text-lg md:text-xl text-slate-700 max-w-2xl text-center mt-5 mb-8 font-normal leading-relaxed"
+            >
               Reliez <strong className="font-semibold text-brand-dark">Cotonou</strong> à <strong className="font-semibold text-brand-dark">Parakou</strong> en 1h15 de vol direct, ou profitez de nos vols privés sur mesure au Bénin et dans toute la sous-région.
-            </p>
+            </motion.p>
 
-            {/* Two call-to-action buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-4">
+            {/* Motion 2 & 3: Staggered CTA buttons with MagneticButton and Shimmer sweep */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-wrap items-center justify-center gap-4"
+            >
               <a
                 href="#flotte"
                 className="px-6 py-2.5 rounded-full bg-white/95 hover:bg-white text-slate-800 font-medium text-sm shadow-sm hover:shadow border border-slate-200/90 transition-all duration-200"
               >
                 Découvrir la flotte
               </a>
-              <button
+              <MagneticButton
                 onClick={handleBookNow}
-                className="group relative overflow-hidden bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B] text-white px-6 py-2.5 rounded-full font-medium text-sm shadow-md shadow-[#C69214]/25 border border-amber-200/40 transition-all duration-300 flex items-center gap-2 cursor-pointer active:scale-98"
+                className="bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B] text-white px-6 py-2.5 rounded-full font-medium text-sm shadow-md shadow-[#C69214]/25 border border-amber-200/40 transition-all duration-300 flex items-center gap-2"
               >
-                <Plane className="w-4 h-4 text-white -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                <Plane className="w-4 h-4 text-white -rotate-45" />
                 <span>Réserver un vol</span>
-              </button>
-            </div>
+              </MagneticButton>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Award, Sparkles, Shield, Clock, HelpCircle, ArrowRight, GlassWater, Plane } from 'lucide-react';
 import { motion } from 'motion/react';
 import { IMAGES } from '../data';
+import MagneticButton from './MagneticButton';
 
 interface VipSectionProps {
   onSelectVip: () => void;
@@ -81,8 +82,14 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
             </motion.div>
           </div>
 
-          {/* Description Text & Grid (7 Columns) */}
-          <div className="lg:col-span-7 space-y-7">
+          {/* Description Text & Grid (7 Columns) with Motion 2 Reveal */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 space-y-7"
+          >
             <div className="space-y-3">
               <div className="inline-flex items-center gap-2 bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow font-semibold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full">
                 <Award className="w-3.5 h-3.5" />
@@ -96,12 +103,19 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
               </p>
             </div>
 
-            {/* Core features block */}
+            {/* Core features block with Motion 2 staggered card reveal */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {vipFeatures.map((item) => {
+              {vipFeatures.map((item, idx) => {
                 const IconComp = item.icon;
                 return (
-                  <div key={item.title} className="flex gap-3.5 bg-white/5 border border-white/10 p-5 rounded-2xl hover:border-white/20 transition-colors">
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.1, ease: 'easeOut' }}
+                    className="flex gap-3.5 bg-white/5 border border-white/10 p-5 rounded-2xl hover:border-white/20 transition-colors"
+                  >
                     <div className="w-9 h-9 rounded-lg bg-brand-yellow/15 border border-brand-yellow/30 text-brand-yellow flex items-center justify-center shrink-0 mt-0.5">
                       <IconComp className="w-4 h-4" />
                     </div>
@@ -113,30 +127,30 @@ export default function VipSection({ onSelectVip }: VipSectionProps) {
                         {item.desc}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
 
-            {/* Primary Action Button */}
+            {/* Primary Action Button with Motion 3 Magnetic effect & Shimmer */}
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <button
+              <MagneticButton
                 onClick={() => {
                   onSelectVip();
                 }}
-                className="group relative overflow-hidden bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B] text-white px-7 py-3 rounded-full font-medium text-sm shadow-md border border-amber-200/30 transition-colors duration-200 flex items-center justify-center gap-2.5 cursor-pointer active:scale-98"
+                className="bg-gradient-to-r from-[#B8860B] via-[#C69214] to-[#D4A017] hover:from-[#C69214] hover:to-[#E5A81B] text-white px-7 py-3 rounded-full font-medium text-sm shadow-md border border-amber-200/30 transition-colors duration-200 flex items-center justify-center gap-2.5"
               >
-                <Plane className="w-4 h-4 text-white -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                <span className="relative z-10">Demander un devis de vol privé</span>
-                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform relative z-10" />
-              </button>
+                <Plane className="w-4 h-4 text-white -rotate-45" />
+                <span>Demander un devis de vol privé</span>
+                <ArrowRight className="w-4 h-4 text-white" />
+              </MagneticButton>
 
               <span className="text-xs text-slate-400 text-center sm:text-left font-mono">
                 Ou par téléphone direct : <strong className="text-white">+229 21 97 97 97</strong>
               </span>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
       </div>

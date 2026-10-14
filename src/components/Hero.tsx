@@ -35,21 +35,9 @@ export default function Hero({ onSearch }: HeroProps) {
     });
   };
 
-  const [videoLoaded, setVideoLoaded] = useState(false);
-
   return (
-    <section id="hero" className="relative h-screen w-full overflow-hidden bg-slate-800">
-      {/* Instant visual fallback: airplane flight image displays immediately on millisecond 0 */}
-      <img
-        src={IMAGES.hero}
-        alt="Vol Amazone Airlines"
-        fetchPriority="high"
-        loading="eager"
-        decoding="sync"
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      />
-
-      {/* Video Background with direct poster, preloaded source, and smooth playback */}
+    <section id="hero" className="relative h-screen w-full overflow-hidden bg-black">
+      {/* Video Background with direct instant playback and zero display delay */}
       <video
         ref={videoRef}
         autoPlay
@@ -57,13 +45,8 @@ export default function Hero({ onSearch }: HeroProps) {
         loop
         playsInline
         preload="auto"
-        poster={IMAGES.hero}
-        onLoadedData={() => setVideoLoaded(true)}
-        onCanPlay={() => setVideoLoaded(true)}
         src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_091828_e240eb17-6edc-4129-ad9d-98678e3fd238.mp4"
-        className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-700 ${
-          videoLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="absolute inset-0 w-full h-full object-cover z-0 block"
       >
         <source
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_091828_e240eb17-6edc-4129-ad9d-98678e3fd238.mp4"

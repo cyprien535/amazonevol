@@ -13,7 +13,7 @@ import LoginModal from './components/LoginModal';
 import { BookingState } from './types';
 import { X } from 'lucide-react';
 import { AnimatePresence } from 'motion/react';
-import CustomCursor from './components/CustomCursor';
+import ClickSpark from './components/ClickSpark';
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState<BookingState | null>(null);
@@ -65,41 +65,49 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-brand-blue selection:text-brand-yellow">
-      {/* 4. Motion Design: Fluid Custom Cursor with Ambient Spotlight on Desktop */}
-      <CustomCursor />
-      
-      {/* Sticky Premium Navbar */}
-      <Navbar
-        onOpenBooking={() => {
-          handleSelectRoute('Cotonou', 'Parakou');
-        }}
-        onOpenContact={() => setIsContactOpen(true)}
-        onOpenLogin={() => setIsLoginOpen(true)}
-      />
+      {/* Interactive Golden Click Sparks Effect */}
+      <ClickSpark
+        sparkColor="#D4A017"
+        sparkSize={12}
+        sparkRadius={20}
+        sparkCount={8}
+        duration={450}
+        easing="ease-out"
+        className="min-h-screen w-full relative"
+      >
+        {/* Sticky Premium Navbar */}
+        <Navbar
+          onOpenBooking={() => {
+            handleSelectRoute('Cotonou', 'Parakou');
+          }}
+          onOpenContact={() => setIsContactOpen(true)}
+          onOpenLogin={() => setIsLoginOpen(true)}
+        />
 
-      {/* Main Single Page Sections */}
-      <main>
-        {/* 1. Hero Section with Video Background */}
-        <Hero onSearch={handleHeroSearch} />
+        {/* Main Single Page Sections */}
+        <main>
+          {/* 1. Hero Section with Video Background */}
+          <Hero onSearch={handleHeroSearch} />
 
-        {/* 2. Core Brand Advantages Grid */}
-        <Advantages />
+          {/* 2. Core Brand Advantages Grid */}
+          <Advantages />
 
-        {/* 3. Domestic Flight Fleet Specs */}
-        <Fleet onSelectAircraft={handleSelectAircraft} />
+          {/* 3. Domestic Flight Fleet Specs */}
+          <Fleet onSelectAircraft={handleSelectAircraft} />
 
-        {/* 4. Destination Map Grid (Flagship route & Regional extensions) */}
-        <Destinations onSelectRoute={handleSelectRoute} />
+          {/* 4. Destination Map Grid (Flagship route & Regional extensions) */}
+          <Destinations onSelectRoute={handleSelectRoute} />
 
-        {/* 5. High-end Dark VIP Experience showcase */}
-        <VipSection onSelectVip={handleSelectVip} />
+          {/* 5. High-end Dark VIP Experience showcase */}
+          <VipSection onSelectVip={handleSelectVip} />
 
-        {/* 6. Strategic Partners with OrbitImages */}
-        <Partners />
-      </main>
+          {/* 6. Strategic Partners with OrbitImages */}
+          <Partners />
+        </main>
 
-      {/* 7. Footer section */}
-      <Footer />
+        {/* 7. Footer section */}
+        <Footer />
+      </ClickSpark>
 
       {/* MODALS / OVERLAYS */}
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />

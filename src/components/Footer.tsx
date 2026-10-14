@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Plane, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, Send, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { IMAGES } from '../data';
+import CurvedInput from './CurvedInput';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -139,24 +140,35 @@ export default function Footer() {
               Inscrivez-vous pour recevoir nos informations de vols, ouvertures de lignes et offres spéciales.
             </p>
 
-            <form onSubmit={handleSubscribe} className="space-y-3">
-              <div className="relative">
-                <input
-                  type="email"
-                  required
-                  placeholder="votre.email@domaine.bj"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-full px-5 py-3 pr-12 text-sm text-white focus:border-brand-yellow focus:outline-none focus:ring-1 focus:ring-brand-yellow transition-colors"
-                />
-                <button
-                  type="submit"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 text-brand-yellow hover:text-white p-2 transition-colors cursor-pointer"
-                  title="S'inscrire"
-                >
-                  <Send className="w-4 h-4" />
-                </button>
-              </div>
+            <div className="space-y-3">
+              <CurvedInput
+                type="email"
+                placeholder="votre.email@domaine.bj"
+                buttonText="S'inscrire"
+                value={email}
+                onChange={(val) => setEmail(val)}
+                onSubmit={(val) => {
+                  if (val && val.includes('@')) {
+                    setSubscribed(true);
+                    setEmail('');
+                    setTimeout(() => setSubscribed(false), 4000);
+                  }
+                }}
+                bend={12}
+                height={52}
+                cornerRadius={16}
+                borderWidth={1.5}
+                fontSize={13}
+                backgroundColor="rgba(255, 255, 255, 0.05)"
+                textColor="#ffffff"
+                placeholderColor="#94a3b8"
+                borderColor="rgba(255, 255, 255, 0.15)"
+                buttonColor="#C69214"
+                buttonTextColor="#ffffff"
+                iconColor="#C69214"
+                shadowSize="sm"
+                width="100%"
+              />
 
               {subscribed && (
                 <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs p-2.5 rounded-lg flex items-center gap-2">
@@ -164,7 +176,7 @@ export default function Footer() {
                   <span>Inscription prise en compte avec succès !</span>
                 </div>
               )}
-            </form>
+            </div>
           </div>
 
         </div>

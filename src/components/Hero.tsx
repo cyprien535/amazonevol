@@ -164,9 +164,9 @@ export default function Hero({ onSearch }: HeroProps) {
           )}
         </header>
 
-        {/* Main Content Area */}
-        <div className="flex-1 flex items-center justify-center px-4">
-          <div className="flex flex-col items-center text-center -mt-24 sm:-mt-44 md:-mt-80">
+        {/* Main Content Area: Centered with balanced optical spacing */}
+        <div className="flex-1 flex items-center justify-center px-4 py-8">
+          <div className="flex flex-col items-center text-center -mt-4 sm:-mt-6 md:-mt-8 max-w-4xl mx-auto">
             {/* Motion 2: Staggered reveal for Hero typography */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}

@@ -9,7 +9,6 @@ import planeCutoutImg from './assets/images/regenerated_image_1790604369886.png'
 import cotonouParakouImg from './assets/images/regenerated_image_1791894690440.png';
 import lagosRouteImg from './assets/images/dest_lagos_route_1791895181127.jpg';
 import abidjanRouteImg from './assets/images/dest_abidjan_route_1791895181797.jpg';
-import dakarRouteImg from './assets/images/dest_dakar_route_1791895182270.jpg';
 
 // Image assets bundled by Vite for production and development
 export const IMAGES = {
@@ -23,7 +22,6 @@ export const IMAGES = {
   cotonouParakou: cotonouParakouImg,
   destLagos: lagosRouteImg,
   destAbidjan: abidjanRouteImg,
-  destDakar: dakarRouteImg,
 };
 
 export const FLIGHTS_COTO_PARA: Flight[] = [
@@ -176,14 +174,6 @@ export const DESTINATIONS = [
     code: 'COO ↔ ABJ',
     time: '1h 40m',
     image: abidjanRouteImg,
-  },
-  {
-    name: 'Cotonou ↔ Dakar',
-    status: 'bientôt',
-    description: 'Ouverture vers le Sénégal en vol direct pour connecter les deux grandes métropoles ouest-africaines.',
-    code: 'COO ↔ DKR',
-    time: '3h 30m',
-    image: dakarRouteImg,
   },
 ];
 

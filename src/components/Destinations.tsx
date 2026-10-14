@@ -81,28 +81,6 @@ export default function Destinations({ onSelectRoute }: DestinationsProps) {
       image: IMAGES.destAbidjan,
       imageAlt: 'Liaison aérienne d’affaires entre Cotonou et Abidjan',
     },
-    {
-      index: '04',
-      name: 'Cotonou ↔ Dakar',
-      routeSubtitle: 'Aéroport Cadjehoun (COO) ↔ Blaise Diagne (DSS)',
-      status: 'upcoming' as const,
-      statusLabel: 'Grande Liaison Panafricaine • Bientôt disponible',
-      code: 'COO ↔ DKR',
-      time: '3h 30m',
-      frequency: 'Vols directs sans escale',
-      priceFrom: 'Tarif d’ouverture bientôt',
-      description:
-        'Ouverture d’une liaison directe vers le Sénégal reliant deux capitales côtières phares. Conçue pour les délégations institutionnelles, opérateurs économiques et voyageurs fréquents en quête de ponctualité et d’efficacité.',
-      highlights: [
-        { label: 'Temps de vol', value: '3h 30m' },
-        { label: 'Trajet', value: 'Direct sans escale' },
-        { label: 'Service', value: 'Prestations VIP' },
-      ],
-      airportFrom: 'Cotonou-Cadjehoun (COO)',
-      airportTo: 'Dakar-Blaise Diagne (DSS)',
-      image: IMAGES.destDakar,
-      imageAlt: 'Corridor trans-africain Cotonou - Dakar en vol direct',
-    },
   ];
 
   const handleBookRoute = (routeName: string) => {

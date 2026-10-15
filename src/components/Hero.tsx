@@ -217,32 +217,33 @@ export default function Hero({ onSearch }: HeroProps) {
             </motion.div>
           </div>
 
-          {/* Dynamic Looping Text Banner: Edge-to-Edge touching left & right borders of screen */}
+          {/* Dynamic Looping Text: Sleek, compact snake wave with fine boarding pass ticket zigzag cut */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full mt-5 sm:mt-7 overflow-hidden pointer-events-auto select-none"
+            transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full mt-3 sm:mt-5 pointer-events-auto select-none overflow-hidden"
           >
             <TextLoop
               text="AMAZONE AIRLINES ✦ VOL DIRECT COTONOU – PARAKOU EN 1H15 ✦ L'AVIATION DE PRESTIGE AU BÉNIN ✦ JETS PRIVÉS & CHARTERS VIP ✦ EXCELLENCE & SÉCURITÉ GARANTIES"
               shape="wave"
-              speed={75}
+              speed={65}
               direction="forward"
               separator="✦"
-              curviness={18}
-              fontSize={22}
-              fontWeight={800}
-              letterSpacing={3}
+              curviness={16}
+              fontSize={15}
+              fontWeight={700}
+              letterSpacing={2}
               uppercase
               color="#FFFFFF"
               ribbon
               ribbonColor="gold"
-              ribbonWidth={56}
+              ribbonWidth={42}
+              ticketCut={true}
               pauseOnHover
-              viewWidth={1440}
-              viewHeight={160}
-              className="w-full filter drop-shadow-xl"
+              viewWidth={1600}
+              viewHeight={90}
+              className="w-full drop-shadow-md"
             />
           </motion.div>
         </div>

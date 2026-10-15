@@ -222,7 +222,7 @@ export default function Hero({ onSearch }: HeroProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full mt-3 sm:mt-5 pointer-events-auto select-none overflow-hidden"
+            className="w-full mt-8 sm:mt-11 md:mt-14 pointer-events-auto select-none overflow-hidden"
           >
             <TextLoop
               text="AMAZONE AIRLINES ✦ VOL DIRECT COTONOU – PARAKOU EN 1H15 ✦ L'AVIATION DE PRESTIGE AU BÉNIN ✦ JETS PRIVÉS & CHARTERS VIP ✦ EXCELLENCE & SÉCURITÉ GARANTIES"

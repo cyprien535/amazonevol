@@ -39,7 +39,7 @@ export default function Hero({ onSearch }: HeroProps) {
 
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden bg-black">
-      {/* Video Background with direct instant playback and zero display delay */}
+      {/* Video Background with instant first-frame poster and ultra-fast faststart local streaming */}
       <video
         ref={videoRef}
         autoPlay
@@ -47,9 +47,11 @@ export default function Hero({ onSearch }: HeroProps) {
         loop
         playsInline
         preload="auto"
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_091828_e240eb17-6edc-4129-ad9d-98678e3fd238.mp4"
+        poster="/videos/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover z-0 block"
       >
+        <source src="/videos/hero-720p.mp4" type="video/mp4" media="(max-width: 1024px)" />
+        <source src="/videos/hero-1080p.mp4" type="video/mp4" />
         <source
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_091828_e240eb17-6edc-4129-ad9d-98678e3fd238.mp4"
           type="video/mp4"
